@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+{% block header %}
+{% endblock %}
+
+{% block content %}
+    <div class="fundo-topo-menu">
+        Editar Tipo de Processo
+    </div>
+    <br>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="container">
+                <div class="col-md-8 col-xs-12">
+                    {{ form_start(form) }}
+                    <div class="col-md-8 col-xs-12">
+                        {{ form_row(form.descricao, {'label':'Descrição'}) }}
+                    </div>
+                    <div class="col-md-4 col-xs-12">
+                        {{ form_row(form.peso, {'label':'Peso'}) }}
+                    </div>
+                    <div class="col-md-12 col-xs-12">
+                        <input type="submit" value="Enviar" class="btn btn-primary"/>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

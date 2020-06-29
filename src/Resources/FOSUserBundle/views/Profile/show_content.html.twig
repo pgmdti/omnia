@@ -1,0 +1,22 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="fos_user_user_show">
+    <p>Nome: {{ user.nome }}</p>
+    <p>Login: {{ user.username }}</p>
+    <p>E-mail: {{ user.email }}</p>
+    {% if app.user.cargo is not null %}
+        <p>Cargo: {{ user.cargo.descricao }}</p>
+    {% else %}
+        <p>Cargo: Não definido</p>
+    {% endif %}
+    <p>Lotação:
+    {% if app.user.lotacao is not null %}
+        {% for r in user.lotacao %}
+             {{ r.descricao }}
+            {% endfor %}
+
+    {% endif %}
+    </p>
+    <a href="{{ path('fos_user_change_password') }}" class="btn btn-primary">Alterar Senha</a>
+    <a href="{{ path('fos_user_profile_edit') }}" class="btn btn-primary">Alterar Dados</a>
+</div>

@@ -1,0 +1,149 @@
+<div class="row">
+    <br>
+<div class="container-fluid">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <span id="_title_list_acts">Mostrando {{ acts|length }} registro(s). Período: {{ dateinifilter|date('d/m/Y') }} a {{ datefimfilter|date('d/m/Y') }}. {{ valueselection }}.</span>
+        <a href="#!" title="Exportar para PDF" id="_btn-gera-pdf" class="pull-right">
+            <img src="{{ asset('uploads/images/logo_pdf.png') }}" width="32" height="auto" float="right">
+        </a>
+    </div>
+</div>
+<br>
+<div class="container-fluid">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="col-md-12 col-xs-12 table-responsive">
+                <table class="table table-hover datatables" id="_acts-procurador">
+                    <thead class="rows">
+                    <tr>
+                        <th>Date</th>
+                        <th>Especializada</th>
+                        <th>Tipo de Ato</th>
+                        <th>Assunto</th>
+                        <th>Tipo de Processo</th>
+                        <th>Nº Processo</th>
+                        <th>#</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for i in acts %}
+                        <tr>
+                            <td>{{ i.emissao|date('d/m/Y') }}</td>
+                            <td>{{ i.lotacao.descricao }}</td>
+                            <td>{{ i.tipodeato.descricao }}</td>
+                            <td>{{ i.assunto }}</td>
+                            {% set processo = '' %}
+                            {% if i.tipodeprocesso is not null %}
+                                {% set processo = i.tipodeprocesso.descricao %}
+                            {% endif %}
+                            <td>{{ processo }}</td>
+                            <td>{{ i.numerodoprocesso }}</td>
+                            <td><a href="#!" onclick='viewDetailsAct("{{ path('esp_produtividade_visualizar-ato', {'id':i.id}) }}")'
+                                   class="btn btn-default btn-sm">View</a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td colspan="7"></td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+        </div>
+        <input type="button" class="btn btn-success btn-sm" value="Voltar" onclick="turnBackToListActs('{{ path('esp_produtividade_esp-filter-reports') }}')">
+        <br><br>
+    </div>
+</div>
+
+<script>
+
+    var table, arraysize;
+
+    $(document).ready(function () {
+
+        table = $('.datatables').DataTable({
+            lengthMenu: [[5, 10, 15, -1], [5, 10, 15, "Tudo"]],
+            stateSave: true,
+            language: {
+                "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Portuguese-Brasil.json"
+            }
+        });
+
+        $("#_btn-gera-pdf").on('click', function () {
+
+            var doc = new jsPDF('landscape');
+            doc.setFontSize(10);
+            doc.setFontStyle('arial');
+            var titletext = $("#_title_list_acts").text();
+
+            doc.text(15,15,titletext);
+            var pdfHead = headRows($("#_acts-procurador thead tr th"));
+            var count = arraysize;
+            var pdfBody = [];
+
+            table.rows().iterator('row', function (context, index) {
+                var $data = $(this.row(index).node());
+                var $columns = $data.find('td');
+                var rowBody = {};
+                $.each($columns, function (i, item) {
+                    if(i < count){
+                        rowBody[i] = item.innerHTML;
+                    }
+                });
+                pdfBody.push(rowBody);
+            });
+
+            doc.autoTable({
+                head: pdfHead,
+                body: pdfBody,
+                startY: 20,
+                /* apply styling to table body */
+                bodyStyles: {
+                    valign: 'top'
+                },
+                /* apply global styling */
+                styles: {
+                    cellWidth: 'wrap',
+                    rowPageBreak: 'auto',
+                    halign: 'left'
+                },
+                /* apply styling specific to table columns */
+                columnStyles: {
+                    1: {
+                        cellWidth: 'auto'
+                    },
+                    2: {
+                        cellWidth: 'auto'
+                    },
+                    3: {
+                        cellWidth: 'auto'
+                    },
+                    4: {
+                        cellWidth: 'auto'
+                    }
+                }
+            });
+
+            doc.save('procurador.pdf');
+        });
+    });
+
+    function headRows(table) {
+
+        var header = [];
+        var row = {};
+        var index = 0;
+        $(table).each(function () {
+            if($(this).text() != '#'){
+                row[index] = $(this).text();
+                index++;
+            }
+        });
+        arraysize = index;
+        header.push(row);
+
+        return header;
+    };
+
+</script>

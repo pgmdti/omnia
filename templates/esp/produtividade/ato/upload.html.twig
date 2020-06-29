@@ -1,0 +1,97 @@
+{% extends "base.html.twig" %}
+{% block header %}
+{% endblock %}
+
+{% block content %}
+    <div class="fundo-topo-menu">
+        Rotina de importação de Atos
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="container">
+                <div class="col-md-11 col-xs-12">
+                    {{ form_start(form) }}
+
+                        <div class="col-md-12 col-xs-12">
+
+                                {{ form_row(form.file, {'label':'Arquivo (.csv)'}) }}
+
+                        </div>
+
+                        <br><br><br><br>
+
+                        <div class="col-md-12 col-xs-12">
+                            <input class="btn btn-primary mySpinner" type="submit" value="Enviar" />
+                        </div>
+
+                    {{ form_end(form) }}
+
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                               <th colspan="3">Instruções:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th colspan="3">Criar arquivo csv com a primeira linha contendo o cabeçalho das colunas conforme segue:</th>
+                            </tr>
+                            <tr>
+                                <th>Identificação da coluna</th>
+                                <th>Formato</th>
+                                <th>Descrição</th>
+                            </tr>
+                            <tr>
+                                <td>emissao</td>
+                                <td>dd/mm/aaaa</td>
+                                <td>data da ocorrência do ato</td>
+                            </tr>
+                            <tr>
+                                <td>numeroato</td>
+                                <td>texto</td>
+                                <td>número do ato</td>
+                            </tr>
+                            <tr>
+                                <td>tipodeato</td>
+                                <td>texto</td>
+                                <td>descrição do tipo de ato (conforme lista de tipos de ato do site)</td>
+                            </tr>
+                            <tr>
+                                <td>assunto</td>
+                                <td>texto</td>
+                                <td>descrever o assunto</td>
+                            </tr>
+                            <tr>
+                                <td>interessado</td>
+                                <td>texto</td>
+                                <td>se não houver, deixar em branco</td>
+                            </tr>
+                            <tr>
+                                <td>tipodeprocesso</td>
+                                <td>texto</td>
+                                <td>descrição do tipo de processo (conforme lista de tipos de processo do site) se não houver, deixar em branco</td>
+                            </tr>
+                            <tr>
+                                <td>numeroprocesso</td>
+                                <td>texto</td>
+                                <td>se não houver, deixar em branco</td>
+                            </tr>
+                            <tr>
+                                <td>descricao</td>
+                                <td>texto</td>
+                                <td>se não houver, deixar em branco</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="3"></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

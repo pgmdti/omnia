@@ -1,0 +1,263 @@
+{% extends "base.html.twig" %}
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<div class="fundo-topo-menu">
+    Editar Cadastro de Pessoal
+</div>
+
+<br>
+
+
+
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-md-2 col-sm-2 col-xs-12">
+            <h4>Cadastrar Novo(a)</h4>
+
+            <a href="{{ path('dai_rh_classificacao_index') }}"
+               class="btn btn-success btn-block">Situação</a>
+            <br>
+            <a href="{{ path('dai_rh_listar_cargos') }}"
+               class="btn btn-info btn-block">Cargo</a>
+            <br>
+            <a href="{{ path('dai_rh_listar_orgaos') }}"
+               class="btn btn-warning btn-block">Órgão</a>
+            <br>
+            <a href="{{ path('dai_rh_listar_estadocivis') }}"
+               class="btn btn-primary btn-block">Estado Civil</a>
+            <br>
+            <a href="{{ path('dai_rh_listar_escolaridades') }}"
+               class="btn btn-danger btn-block">Escolaridade</a>
+        </div>
+
+        <div class="col-md-10 col-sm-10 col-xs-12">
+
+            {{ form_start(form) }}
+
+            <div class="row">
+                <div class="container-topo">
+                    <div class="row">
+                    <div class="col-md-2 col-sm-2 col-xs-12">
+                        {{ form_row(form.classificacao, {'label':'Situação'}) }}
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                        {{ form_row(form.cargo, {'label':'Cargo'}) }}
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                        {{ form_row(form.departamento, {'label':'Lotação'}) }}
+                    </div>
+                    <div class="col-md-2 col-sm-2 col-xs-12">
+                        {{ form_row(form.cedido, {'label':'Cedido?'}) }}
+                    </div>
+                    <div class="col-md-2 col-sm-2 col-xs-12">
+                        {{ form_row(form.orgao, {'label':'Órgão Orig/Dest'}) }}
+                    </div>
+                    </div>
+                </div>
+
+                <div>
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#dadospessoais" class="tabs-color" aria-controls="dadospessoais" role="tab" data-toggle="tab">Dados Pessoais</a></li>
+                        <li role="presentation"><a href="#documentospessoais" class="tabs-color" aria-controls="documentospessoais" role="tab" data-toggle="tab">Documentos Pessoais</a></li>
+                        <li role="presentation"><a href="#dadoscomplemento" class="tabs-color" aria-controls="dadoscomplemento" role="tab" data-toggle="tab">Dados Complementares</a></li>
+                        <li role="presentation"><a href="#arquivos" class="tabs-color" aria-controls="arquivos" role="tab" data-toggle="tab">Arquivos</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+
+                        <div role="tabpanel" class="tab-pane fade in active" id="dadospessoais">
+                            <div class="col-md-2 col-sm-2 col-xs-12">
+                                {{ form_row(form.matricula, {'label':'Matrícula'}) }}
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                {{ form_row(form.nome, {'label':'Nome'}) }}
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                {{ form_row(form.endereco, {'label':'Endereço'}) }}
+                            </div>
+                            <div class="col-md-2 col-sm-2 col-xs-12">
+                                {{ form_row(form.numero, {'label':'Nº'}) }}
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                {{ form_row(form.bairro, {'label':'Bairro'}) }}
+                            </div>
+                            <div class="col-md-2 col-sm-2 col-xs-12">
+                                {{ form_row(form.uf, {'label':'UF'}) }}
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                {{ form_row(form.cidade, {'label':'Cidade'}) }}
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                {{ form_row(form.cep, {'label':'Cep'}) }}
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                {{ form_row(form.fone, {'label':'Telefone'}) }}
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                {{ form_row(form.email, {'label':'E-mail'}) }}
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                {{ form_row(form.estadocivil, {'label':'Estado Civil'}) }}
+                            </div>
+                            <div class="col-md-2 col-sm-2 col-xs-12">
+                                {{ form_row(form.datanascimento, {'label':'Data Nascto'}) }}
+                            </div>
+                            <div class="col-md-2 col-sm-2 col-xs-12">
+                                {{ form_row(form.ufnatu, {'label':'UF'}) }}
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                {{ form_row(form.naturalidade, {'label':'Naturalidade'}) }}
+                            </div>
+                            <div class="col-md-2 col-sm-2 col-xs-12">
+                                {{ form_row(form.sexo, {'label':'Sexo'}) }}
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                {{ form_row(form.mae, {'label':'Mãe'}) }}
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                {{ form_row(form.pai, {'label':'Pai'}) }}
+                            </div>
+                        </div>
+
+                        <div role="tabpanel" class="tab-pane fade" id="documentospessoais">
+                            <div class="col-md-2 col-sm-2 col-xs-12">
+                                {{ form_row(form.cpf, {'label':'CPF nº'}) }}
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                {{ form_row(form.rg, {'label':'RG nº'}) }}
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                {{ form_row(form.orgaoemissor, {'label':'Órgão emissor'}) }}
+                            </div>
+                            <div class="col-md-2 col-sm-2 col-xs-12">
+                                {{ form_row(form.ufrg, {'label':'UF'}) }}
+                            </div>
+                            <div class="col-md-2 col-sm-2 col-xs-12">
+                                {{ form_row(form.dataemissao, {'label':'Data emissão'}) }}
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                {{ form_row(form.cnh, {'label':'CNH nº'}) }}
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                {{ form_row(form.categoria, {'label':'Categoria'}) }}
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                {{ form_row(form.pispasep, {'label':'PIS/Pasep nº'}) }}
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                {{ form_row(form.oab, {'label':'OAB nº'}) }}
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                {{ form_row(form.ctps, {'label':'CTPS nº'}) }}
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                {{ form_row(form.seriectps, {'label':'Série'}) }}
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                {{ form_row(form.certmil, {'label':'Certificado Militar'}) }}
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                {{ form_row(form.seriecertmil, {'label':'Série'}) }}
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                {{ form_row(form.titulo, {'label':'Título de Eleitor'}) }}
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                {{ form_row(form.secao, {'label':'Seção'}) }}
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                {{ form_row(form.zona, {'label':'Zona'}) }}
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                {{ form_row(form.ufeleitor, {'label':'UF'}) }}
+                            </div>
+
+                        </div>
+
+                        <div role="tabpanel" class="tab-pane fade" id="dadoscomplemento">
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                {{ form_row(form.grauinstrucao, {'label':'Grau de Instrução'}) }}
+                            </div>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                {{ form_row(form.especializacoes, {'label':'Especializações'}) }}
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                {{ form_row(form.dataposse, {'label':'Data entrada em exercício'}) }}
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                {{ form_row(form.duracao, {'label':'Tempo de duração (estágio, contrato)'}) }}
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                {{ form_row(form.datatermino, {'label':'Data do Término (estágio, contrato)'}) }}
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <h4>Dados Bancários</h4>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                {{ form_row(form.banco, {'label':'Banco'}) }}
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                {{ form_row(form.agencia, {'label':'Agência'}) }}
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                {{ form_row(form.conta, {'label':'Conta'}) }}
+                            </div>
+                        </div>
+
+                        <div role="tabpanel" class="tab-pane fade" id="arquivos">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <h4>Enviar Arquivos</h4>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                {{ form_row(form.files, {'label':'Arquivos'}) }}
+                            </div>
+
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <h4>Arquivos anexados</h4>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>Arquivo</th>
+                                        <th>#</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for file in form.vars.data.files %}
+                                        <tr>
+                                            <td>
+                                                <a href="{{ path('dai_rh_documento_download', {'filename':file.path}) }}">
+                                                    {{ file.name }}
+                                                </a>
+                                            </td>
+                                            <td><a href="{{ path('dai_rh_documento_deletar', {'id':file.id, 'idemp':form.vars.data.matricula}) }}">Deletar</a></td>
+
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{ form_end(form) }}
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2 col-xs-4 col-md-offset-2">
+            <input class="btn btn-primary btn-block mySpinner" type="button" onclick="$('form').submit()" value="Salvar Cadastro" />
+        </div>
+    </div>
+    <br><br>
+</div>
+
+    {% endblock %}

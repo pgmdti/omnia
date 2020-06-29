@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+{% block header %}
+{% endblock %}
+{% block content %}
+    <div class="fundo-topo-menu">
+        Cadastro de Parâmetro
+    </div>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-xs-12">
+                {{ form_start(form) }}
+                {{ form_row(form.descricao, {'label':'Descricao'}) }}
+                {{ form_row(form.periodicidade, {'label':'Periodicidade'}) }}
+                {{ form_row(form.emails, {'label':'Enviar para os e-mails'}) }}
+                <input type="submit" value="Enviar" class="btn btn-primary"/>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

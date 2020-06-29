@@ -1,0 +1,76 @@
+<div id="div_img">
+    <br>
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <!-- <span><h4>Período de {{ dateini|date('d/m/Y') }} a {{ datefim|date('d/m/Y') }} - {{ typefilter }}{{ valuefilter }}</h4></span> -->
+        <a href="#!" title="Converter em imagem" onclick="exportImageToClipBoard()" class="pull-left">
+            <img src="{{ asset('uploads/images/png-icon.png') }}" width="32" height="auto">
+        </a>
+    </div>
+    <br><br>
+    <div id="div_chart"></div>
+    <div class="row"><br><br><p>...</p></div>
+    <div id="div_table"></div>
+    <div class="row"><br><br><p>...</p></div>
+</div>
+
+<script type="text/javascript">
+
+    var imgData;
+
+    {{ gc_start([chart, table], ['div_chart', 'div_table']) }}
+
+    {{ gc_event(chart, 'ready', 'printPngChart') }}
+
+    function printPngChart() {
+        imgData = {{ chart.name }}.getImageURI();
+    };
+
+    {{ gc_event(chart, 'select', 'getSelectionChart') }}
+    {{ gc_event(chart, 'error', 'errorHandler') }}
+
+    function getSelectionChart() {
+
+        var selection = {{ chart.name }}.getSelection()[0].row;
+        var valueselection = dataChartDiv_chart.getValue(selection, 0);
+        var typefilter = $("#esp_type_filter_analista").val();
+        var valuefilter = $("#esp_value_filter").val();
+        var dateinifilter = $("#_dateini").val();
+        var datefimfilter = $("#_datefim").val();
+        var url = "{{ path('esp_produtividade_analista_list-acts') }}";
+
+        onChartClickItem(url, typefilter, valuefilter, valueselection, dateinifilter, datefimfilter);
+
+    };
+
+
+    {{ gc_end([chart, table]) }}
+
+    function exportImageToClipBoard() {
+        $.ajax({
+           type: "POST",
+           url: "{{ path('esp_produtividade_analista_export-image-chart') }}",
+           data: {imageData:imgData},
+           success: function (content) {
+               $("#div_img").html(content);
+           }
+        });
+    };
+    
+    function errorHandler(errorMessage) {
+        var typefilter = $("#esp_type_filter").val();
+        var valuefilter = $("#esp_value_filter").val();
+
+        var mensagem = "<h4>Não há dados a serem apresentados para o período selecionado!</h4>";
+
+        if(typefilter == '2'){
+            if(valuefilter != '0'){
+                var textfilter = $("#esp_value_filter option:selected").text();
+                mensagem += "<h4>Analista: "+textfilter+"</h4>";
+            }
+        }
+
+        $("#div_chart").html(mensagem);
+        $("#div_table").html(" ");
+    }
+
+</script>

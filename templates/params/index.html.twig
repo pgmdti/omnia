@@ -1,0 +1,51 @@
+{% extends "base.html.twig" %}
+{% block header %}
+{% endblock %}
+{% block content %}
+    <div class="fundo-topo-menu">
+        Parâmetros
+    </div>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1 col-xs-12">
+                <h4>Ações</h4>
+                <a href="{{ path('params_novo') }}"
+                   class="btn btn-success btn-block">Novo</a>
+            </div>
+            <div class="col-md-10 col-xs-12">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Descrição</th>
+                        <th>E-mails</th>
+                        <th>Periodicidade (dias)</th>
+                        <th>#</th>
+                        <th>#</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for i in params %}
+                        <tr>
+                            <td>{{ i.id }}</td>
+                            <td>{{ i.descricao }}</td>
+                            <td>{{ i.emails }}</td>
+                            <td>
+                                {% for j in i.periodicidade|sort('asc') %}
+                                    <span>{{ j }} </span>
+                                {% endfor %}
+                            </td>
+                            <td><a href="{{ path('params_editar', {'id':i.id}) }}"
+                                   class="btn btn-default btn-sm">Editar</a></td>
+                            <td><a href="{{ path('params_deletar', {'id':i.id}) }}"
+                                   class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza?')">Deletar</a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot><tr><td colspan="6"></td></tr></tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

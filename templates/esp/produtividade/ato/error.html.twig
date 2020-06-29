@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+{% block header %}
+{% endblock %}
+{% block content %}
+    <div class="fundo-topo-menu">
+        Mensagem!
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 col-xs-12 table-responsive">
+
+                <table class="table table-striped">
+                    <thead><tr><th></th></tr></thead>
+                    <tbody>
+                        {% for i in errormessage %}
+                            <tr><td>{{ i }}</td></tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot><tr><td></td></tr></tfoot>
+                </table>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

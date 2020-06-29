@@ -1,0 +1,55 @@
+{% extends "base.html.twig" %}
+{% block header %}
+{% endblock %}
+
+{% block content %}
+    <div class="fundo-topo-menu">
+        Editar Ato
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="container">
+                <div class="col-md-11 col-xs-12">
+                    {{ form_start(form) }}
+                    <div class="col-md-3 col-xs-12">
+                        {{ form_row(form.emissao, {'label':'Data'}) }}
+                    </div>
+                    <div class="col-md-4 col-xs-12">
+                        {{ form_row(form.numero, {'label':'Nº do Ato'}) }}
+                    </div>
+                    <div class="col-md-5 col-xs-12">
+                        {{ form_row(form.tipodeato, {'label':'Tipo de Ato'}) }}
+                    </div>
+                    <div class="row"></div>
+                    <br>
+                    <div class="col-md-6 col-xs-12">
+                        {{ form_row(form.assunto, {'label':'Assunto'}) }}
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                        {{ form_row(form.interessado, {'label':'Interessado/Requerente'}) }}
+                    </div>
+                    <div class="row"></div>
+                    <br>
+                    <div class="col-md-6 col-xs-12">
+                        {{ form_row(form.tipodeprocesso, {'label':'Tipo de Processo'}) }}
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                        {{ form_row(form.numerodoprocesso, {'label':'Nº do Processo'}) }}
+                    </div>
+                    <div class="row"></div>
+                    <br>
+                    <div class="col-md-12 col-xs-12">
+                        {{ form_row(form.descricao, {'label':'Descrição'}) }}
+                    </div>
+                    <div class="row"></div>
+                    <br>
+                    <div class="col-md-12 col-xs-12">
+                        <input class="btn btn-primary" type="submit" value="Enviar" />
+                    </div>
+                    <br>
+                    {{ form_end(form) }}
+                </div>
+        </div>
+    </div>
+{% endblock %}

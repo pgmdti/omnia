@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+{% block header %}
+{% endblock %}
+
+{% block content %}
+    <div class="fundo-topo-menu">
+        Cadastro de Tipo de Equipamento
+    </div>
+    <br>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="container">
+                <div class="col-md-6 col-xs-12 offset-md-3">
+                    {{ form_start(form) }}
+                        {{ form_row(form.descricao, {'label':'Descricao'}) }}
+                        <input class="btn btn-primary" type="submit" value="Enviar" />
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

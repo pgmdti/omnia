@@ -1,0 +1,21 @@
+{
+  "devDependencies": {
+    "@symfony/webpack-encore": "^0.27.0",
+    "google-charts": "^2.0.0"
+  },
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "dev-server": "encore dev-server",
+    "dev": "encore dev",
+    "watch": "encore dev --watch",
+    "build": "encore production"
+  },
+  "dependencies": {
+    "bower": "^1.8.4",
+    "jquery": "^3.4.1",
+    "jspdf": "^1.5.3",
+    "picker": "^0.1.4",
+    "yarn-install": "^1.0.0"
+  }
+}

@@ -1,0 +1,53 @@
+{% extends "base.html.twig" %}
+{% block header %}
+{% endblock %}
+
+{% block content %}
+    <div class="fundo-topo-menu">
+        Relatório Sintético de Críticas
+    </div>
+    <br>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="container">
+                <div class="col-md-12 col-xs-12 table-responsive">
+
+                    <h5>Período de {{ dateini|date('d/m/Y') }} a {{ datefim|date('d/m/Y') }}</h5>
+
+                    <table class="table table-hover">
+                        <thead class="rows">
+                        <tr>
+                            <th>Especializada</th>
+                            <th>Tipo de Processo</th>
+                            <th>Número do Processo</th>
+                            <th>Ocorrências</th>
+                            <th>#</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for i in criticas %}
+                            <tr>
+                                <td>{{ i.lotacao }}</td>
+                                <td>{{ i.tipoprocesso }}</td>
+                                <td>{{ i.numerodoprocesso }}</td>
+                                <td>Ocorreu em {{ i.atos }} atos</td>
+                                <td><a href="{{ path('esp_produtividade_esp-criticas-detalhe', {'dini':dateini, 'dfim':datefim, 'idesp':i.id, 'idproc':i.idtipoprocesso, 'nproc':i.numerodoprocesso }) }}"
+                                       class="btn btn-default btn-sm">
+                                        Detalhar
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="5"></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

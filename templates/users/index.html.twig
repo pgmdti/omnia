@@ -1,0 +1,64 @@
+{% extends "base.html.twig" %}
+{% block header %}
+{% endblock %}
+
+{% block content %}
+    <div class="fundo-topo-menu">
+        Usuários cadastrados
+    </div>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1 col-xs-12">
+                <h4>Ações</h4>
+                <a href="{{ path('fos_user_registration_register') }}"
+                   class="btn btn-success">Novo</a>
+            </div>
+            <div class="col-md-10 col-xs-12">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th colspan="6">
+                            {{ knp_pagination_filter(usr, {
+                                'u.nome':'Nome',
+                                's.descricao':'Cargo'
+                            }) }}
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>Nome</th>
+                        <th>E-mail</th>
+                        <th>Cargo</th>
+                        <th>Lotação</th>
+                        <th>Últ.Acesso</th>
+                        <th>#</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for i in usr %}
+                        {% set cor_linha  = '' %}
+                        {% if not i.enabled %}
+                            {% set cor_linha = 'tr-black-color' %}
+                        {% endif %}
+                        <tr class='{{cor_linha}}'>
+                            <td>{{ i.nome }}</td>
+                            <td>{{ i.email }}</td>
+                            <td>{{ i.cargo.descricao }}</td>
+                            <td>{% for r in i.lotacao %}
+                                {{ r.descricao }}
+                                {% endfor %}</td>
+                            <td>{{ i.lastLogin|date('d/m/Y H:i:s', 'America/Fortaleza') }}</td>
+                            <td><a href="{{ path('fos_user_profile_edit_id', {'id':i.id}) }}"
+                                   class="btn btn-default btn-sm">Editar</a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot><tr><td colspan="6"></td></tr></tfoot>
+                </table>
+                <div class="navigation">
+                    {{ knp_pagination_render(usr) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

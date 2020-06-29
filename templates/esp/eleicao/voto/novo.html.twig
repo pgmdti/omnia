@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+{% block header %}
+{% endblock %}
+
+{% block content %}
+    <div class="fundo-topo-menu">
+        {{ eleicao.titulo }} <br>
+        <<<< REGISTRAR VOTO >>>>
+    </div>
+    <br>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="container">
+                <div class="col-md-6 col-xs-12 col-md-offset-3 fundo-shadow fundo-padding jumbotron">
+                    {{ form_start(form) }}
+                    <div class="col-md-12 col-xs-12">
+                        {{ form_row(form.candidato, {'label':'Candidatos'}) }}
+                    </div>
+                    <br><br><br><br>
+                    <div class="col-md-12 col-xs-12">
+                        <input type="submit" value="Confirmar Voto" class="btn btn-success btn-block"/>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

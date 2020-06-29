@@ -1,0 +1,29 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+
+    <div class="row">
+        <div class="col-md-6 col-xs-12">
+            {{ form_row(form.nome, {'label':'Nome Completo'}) }}
+        </div>
+        <div class="col-md-6 col-xs-12">
+            {{ form_row(form.email, {'label':'E-mail'}) }}
+        </div>
+        <div class="col-md-6 col-xs-12">
+            {{ form_row(form.username, {'label':'Login'}) }}
+        </div>
+        <div class="col-md-3 col-xs-12">
+            {{ form_row(form.cargo, {'label':'Cargo'}) }}
+        </div>
+        <div class="col-md-3 col-xs-12">
+            {{ form_row(form.lotacao, {'label':'Lotação'}) }}
+        </div>
+        <div class="col-md-6 col-xs-12">
+            {{ form_row(form.current_password, {'label':'Senha Atual'}) }}
+        </div>
+        <div class="col-md-12 col-xs-12">
+            <input type="submit" class="btn btn-primary" value="Alterar" />
+        </div>
+    </div>
+
+{{ form_end(form) }}

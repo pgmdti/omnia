@@ -1,0 +1,87 @@
+{% extends "base.html.twig" %}
+{% block header %}
+{% endblock %}
+
+{% block content %}
+    <div class="fundo-topo-menu">
+        Atos Registrados
+    </div>
+
+    <div class="container-fluid">
+       <div class="row">
+            <div class="col-md-12 col-xs-12">
+                <span>Mostrando {{ atos|length }} registro(s).</span><br/><br/>
+                <form action="{{ path('esp_produtividade_analista_ato_index') }}" method="post">
+                    <label>Início: </label>
+                    <input type="date" name="_dateini" value="{{ dateini }}">
+                    <label>Fim: </label>
+                    <input type="date" name="_datefim" value="{{ datefim }}">
+                    <input type="submit" value="Enviar">
+                </form>
+            </div>
+       </div>
+        <br>
+        <div class="row">
+            <div class="container">
+                <div class="col-md-1 col-xs-12">
+                    <h4>Ações</h4>
+                    <a href="{{ path('esp_produtividade_analista_ato_novo') }}"
+                       class="btn btn-success">Novo</a>
+                </div>
+                <div class="col-md-11 col-xs-12 table-responsive">
+
+                        <table class="table table-hover">
+                            <thead class="rows">
+                                <tr>
+                                    <th colspan="8">
+                                        {{ knp_pagination_filter(atos, {
+                                            'u.numero':'Nº do Processo',
+                                            'b.descricao':'Especializada',
+                                            'c.descricao':'Tipo de Ato',
+                                            'd.nome':'Procurador'
+                                        }) }}
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th>{{ knp_pagination_sortable(atos, 'Nº do Processo', 'u.numero') }}</th>
+                                    <th>{{ knp_pagination_sortable(atos, 'Data', 'u.emissao') }}</th>
+                                    <th>{{ knp_pagination_sortable(atos, 'Especializada', 'b.descricao') }}</th>
+                                    <th>{{ knp_pagination_sortable(atos, 'Tipo de Ato', 'c.descricao') }}</th>
+                                    <th>{{ knp_pagination_sortable(atos, 'Procurador', 'd.nome') }}</th>
+                                    <th>#</th>
+                                    <th>#</th>
+                                    <th>#</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for i in atos %}
+                                <tr>
+                                    <td>{{ i.numero }}</td>
+                                    <td>{{ i.emissao|date('d/m/Y') }}</td>
+                                    <td>{{ i.lotacao }}</td>
+                                    <td>{{ i.tipodeato }}</td>
+                                    <td>{{ i.nome }}</td>
+                                    <td><a href="{{ path('esp_produtividade_analista_ato_detalhe', {'id':i.id}) }}"
+                                           class="btn btn-default btn-sm">Ver</a></td>
+                                    <td><a href="{{ path('esp_produtividade_analista_ato_editar', {'id':i.id}) }}"
+                                           class="btn btn-success btn-sm">Editar</a></td>
+                                    <td><a href="{{ path('esp_produtividade_analista_ato_deletar', {'id':i.id}) }}"
+                                           onclick="return confirm('Tem certeza?')" class="btn btn-danger btn-sm">Deletar</a></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="8"></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        <div class="navigation">
+                            {{ knp_pagination_render(atos) }}
+                        </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,28 @@
+<div style="border: black ridge 3px; width: 600px; height:300px;text-align: center; font-family: Arial; position:relative;">
+    <img src="{{ img_src }}" width="128px" height="auto" float="left">
+    <h3>Estagiários com estágio a vencer em {{ prazo }} dias</h3>
+
+    <table border="2" cellpadding="2" cellspacing="2">
+        <thead>
+            <tr>
+                <th>Matricula</th>
+                <th>Nome</th>
+                <th>Cargo</th>
+                <th>Lotacao</th>
+                <th>Termino</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in estagiarios %}
+                <tr>
+                    <td>{{ "%06d"|format(i.matricula) }}</td>
+                    <td>{{ i.nome }}</td>
+                    <td>{{ i.cargo }}</td>
+                    <td>{{ i.lotacao }}</td>
+                    <td>{{ i.datatermino|date('d/m/Y') }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>

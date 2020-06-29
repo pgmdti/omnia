@@ -1,0 +1,76 @@
+{% extends "base.html.twig" %}
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="fundo-topo-menu">
+        Detalhe do Ato
+    </div>
+    <br>
+    <div class="row">
+        <div class="container-fluid table-responsive">
+            <table class="table">
+                {% for i in act %}
+                <tr>
+                    <th>Especializada: </th>
+                    <td>{{ i.lotacao.descricao }}</td>
+                </tr>
+                <tr>
+                    <th>Procurador: </th>
+                    <td>{{ i.user.nome }}</td>
+                </tr>
+                <tr>
+                    <th>Data do Registro: </th>
+                    <td>{{ i.datacadastro|date('d/m/Y') }}</td>
+                </tr>
+                <tr>
+                    <th>Data do Ato: </th>
+                    <td>{{ i.emissao|date('d/m/Y') }}</td>
+                </tr>
+                    <tr>
+                        <th>Nº do Ato: </th>
+                        <td>{{ i.numero }}</td>
+                    </tr>
+                <tr>
+                    <th>Tipo de Ato: </th>
+                    <td>{{ i.tipodeato.descricao }}</td>
+                </tr>
+                <tr>
+                    <th>Assunto: </th>
+                    <td>{{ i.assunto }}</td>
+                </tr>
+                <tr>
+                    <th>Interessado/Requerente: </th>
+                    <td>{{ i.interessado }}</td>
+                </tr>
+
+                <tr>
+                    <th>Tipo de Processo: </th>
+                    {% set processo = 'Não informado' %}
+                    {% if i.tipodeprocesso is not null %}
+                        {% set processo = i.tipodeprocesso.descricao %}
+                    {% endif %}
+                    <td>{{ processo }}</td>
+                </tr>
+                <tr>
+                    <th>Nº do Processo: </th>
+                    <td>{{ i.numerodoprocesso }}</td>
+                </tr>
+                <tr>
+                    <th>Descrição: </th>
+                    <td>{{ i.descricao }}</td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td></td>
+                </tr>
+
+            {% endfor %}
+            </table>
+
+        </div>
+    </div>
+    
+</div>
+{% endblock %}

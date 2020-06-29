@@ -1,0 +1,22 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="jumbotron col-md-6 fundo-shadow">
+                <div class="col-xs-12 form-group">
+                    <div class="col-xs-12 input-group">
+                        <label for="username">E-mail ou login</label>
+                        <input type="text" class="form-control" id="username" name="username" required="required" />
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <input type="submit" class="btn btn-primary" value="Recuperar senha" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+</form>

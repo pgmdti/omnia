@@ -1,0 +1,46 @@
+{% extends "base.html.twig" %}
+{% block header %}
+{% endblock %}
+
+{% block content %}
+    <div class="fundo-topo-menu">
+        Cadastro de Férias, Licenças, Atestados...
+    </div>
+    <br>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2 col-xs-12">
+                <h4>Ações</h4>
+
+                <a href="{{ path('dai_rh_listar_tipoausencias') }}"
+                   class="btn btn-success btn-block">Novo Tipo</a>
+
+            </div>
+
+            <div class="col-md-10 col-xs-12">
+                {{ form_start(form) }}
+                <div class="col-md-6 col-xs-12">
+                    {{ form_row(form.employee, {'label':'Servidor'}) }}
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    {{ form_row(form.tipoausencia, {'label':'Tipo'}) }}
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    {{ form_row(form.dataini, {'label':'Data de início'}) }}
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    {{ form_row(form.datafim, {'label':'Data do término'}) }}
+                </div>
+                <div class="col-md-12 col-xs-12">
+                    {{ form_row(form.descricao, {'label':'Descrição'}) }}
+                </div>
+                <div class="col-md-12 col-xs-12">
+                    <input class="btn btn-primary" type="submit" value="Enviar" />
+                </div>
+                {{ form_end(form) }}
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

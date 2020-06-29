@@ -1,0 +1,82 @@
+{% extends "base.html.twig" %}
+{% block header %}
+{% endblock %}
+
+{% block content %}
+    <div class="fundo-topo-menu">
+        Listagem de Equipamentos
+    </div>
+
+    <br>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-1 col-xs-12">
+                <h4>Ações</h4>
+
+                <a href="{{ path('dti_equipamento_novo') }}"
+                   class="btn btn-success btn-block">Novo</a>
+                <br>
+                <a href="{{ path('dti_tipoequipamento_novo') }}"
+                   class="btn btn-info btn-block">Tipo</a>
+                <br>
+                <a href="{{ path('dti_marca_novo') }}"
+                   class="btn btn-warning btn-block">Marca</a>
+                <br>
+                <a href="{{ path('dti_status_novo') }}"
+                   class="btn btn-danger btn-block">Status</a>
+
+            </div>
+            <div class="col-md-10 col-xs-12">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th colspan="9">
+                            {{ knp_pagination_filter(eqpto, {
+                                'u.titulo':'Titulo',
+                                'c.marca':'Marca',
+                                'd.status':'Status',
+                                'b.descricao':'Tipo',
+                                'e.descricao':'Lotação',
+                                'u.descricao':'Descrição',
+                                'u.id':'Id'
+                            }) }}
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>{{ knp_pagination_sortable(eqpto, 'Id', 'u.id') }}</th>
+                        <th>{{ knp_pagination_sortable(eqpto, 'Serial', 'u.serial') }}</th>
+                        <th>{{ knp_pagination_sortable(eqpto, 'Titulo', 'u.titulo') }}</th>
+                        <th>{{ knp_pagination_sortable(eqpto, 'Tipo', 'b.descricao') }}</th>
+                        <th>{{ knp_pagination_sortable(eqpto, 'Marca', 'c.marca') }}</th>
+                        <th>{{ knp_pagination_sortable(eqpto, 'Status', 'd.status') }}</th>
+                        <th>{{ knp_pagination_sortable(eqpto, 'Lotação', 'e.descricao') }}</th>
+                        <th>#</th>
+                        <th>#</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for i in eqpto %}
+                        <tr>
+                            <td>{{ "%06d"|format(i.id) }}</td>
+                            <td>{{ i.serial }}</td>
+                            <td>{{ i.titulo }}</td>
+                            <td>{{ i.descricao }}</td>
+                            <td>{{ i.marca }}</td>
+                            <td>{{ i.status }}</td>
+                            <td>{{ i.lotacao }}</td>
+                            <td><a href="{{ path('dti_equipamento_editar', {'id':i.id}) }}"
+                                   class="btn btn-default btn-sm">Editar</a></td>
+                            <td><a href="{{ path('dti_equipamento_deletar', {'id':i.id}) }}"
+                                   onclick="return confirm('Tem certeza?')" class="btn btn-danger btn-sm">Deletar</a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot><tr><td colspan="9"></td></tr></tfoot>
+                </table>
+                <div class="navigation">
+                    {{ knp_pagination_render(eqpto) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block head %}
+            <!-- Mobile viewport optimized -->
+            <meta name="viewport"
+                  content="width=device-width, initial-scale=1, maximum-scale=1">
+
+            <meta charset=charset=UTF-8" />
+
+            <meta name="keywords" content="omnia">
+            <meta name="keywords" content="aplicativos pgm">
+            <meta name="keywords" content="pgm">
+            <meta name="keywords" content="procuradoria geral do municipio">
+            <meta name="keywords" content="municipio de teresina">
+
+            <link href="https://pgm.pmt.pi.gov.br/wp-content/uploads/sites/35/2018/04/image.png" rel="shortcut icon" type="image/x-icon">
+
+        {% endblock %}
+
+        <title>{% block title %}Procuradoria Geral do Município de Teresina | PGM{% endblock %}</title>
+        {% block stylesheets %}
+            <!-- Imports CSS -->
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+                  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+                  crossorigin="anonymous">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link rel="stylesheet" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
+            <link rel="stylesheet" href="{{ asset('build/js/app.css') }}">
+
+            <style>
+
+                .loading {
+                    background-image: url({{ asset('uploads/images/ajax-loader.gif') }});
+                    background-position:center;
+                    background-repeat: no-repeat;
+                }
+
+                .watermark{
+                    background-image: url({{ asset('uploads/images/water-mark2.jpg') }});
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    position: absolute;
+                    top: 60px;
+                    bottom: 60px;
+                    width: 100%;
+                    opacity: 0.04;
+                    color: white;
+                }
+                .watermark-over{
+                    color: #000000;
+                    position: relative;
+                    left: 0px;
+                    right: 0px;
+                    top: 0px;
+                    bottom: 60px;
+                }
+            </style>
+
+        {% endblock %}
+    </head>
+    <body>
+        <nav class="navbar navbar-blue navbar-static-top" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed btn-sm" data-toggle="collapse" data-target="#bs-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Menu Principal</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="{{ path('index_geral') }}" class="navbar-brand" title="Home">
+                        <img alt="" id="topo-nav-img" src="{{ asset('uploads/images/logopgm.jpg')}}"
+                             class="img-responsive" float="left">
+
+                        <!-- <i class="glyphicon glyphicon-home small"></i> -->
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
+                    <ul class="nav navbar navbar-nav">
+                        {% if app.user is not null %}
+                            {% if 'ROLE_ADMIN' in app.user.roles %}
+                                <li class="dropdown" role="presentation">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        Relatórios
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown-submenu">
+                                            <a tabindex="-1" href="#" rh/afastamento>
+                                                Procurador
+                                            </a>
+                                            <ul class="dropdown-menu-right">
+                                                <li><a href="{{ path("esp_produtividade_esp-reports") }}">Gráficos</a></li>
+                                                <li role="separator" class="divider"></li>
+                                                <li><a href="{{ path('esp_produtividade_esp-criticas') }}">Críticas</a></li>
+                                            </ul>
+                                        </li>
+                                        <li role="separator" class="divider"></li>
+                                        <li class="dropdown-submenu">
+                                            <a tabindex="-1" href="#" rh/afastamento>
+                                                Analista
+                                            </a>
+                                            <ul class="dropdown-menu-right">
+                                                <li><a href="{{ path("esp_produtividade_analista_esp-reports") }}">Gráficos</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown" role="presentation">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        Cadastros
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ path('users_index') }}">Usuários</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="{{ path('esp_produtividade_tipo-de-ato_index') }}">Tipos de Atos</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="{{ path('esp_produtividade_tipo-de-processo_index') }}">Tipos de Processos</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="{{ path('lotacao_index') }}">Especializadas (Lotações)</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown" role="presentation">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        Pessoal
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ path("dai_rh_cadastro_index") }}">Cadastros</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="{{ path('dai_rh_afastamento_index') }}">Afastamentos</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown" role="presentation">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        Informática
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ path('dti_equipamento_index') }}">Equipamentos</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown" role="presentation">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        Eleições
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ path('esp_eleicao_pleito_index') }}">Pleito</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown" role="presentation">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        Miscelânea
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ path("params_index") }}">Parâmetros</a></li>
+                                    </ul>
+                                </li>
+
+                            {% elseif 'ROLE_CGR' in app.user.roles %}
+                                <li class="dropdown" role="presentation">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        Relatórios
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown-submenu">
+                                            <a tabindex="-1" href="#" rh/afastamento>
+                                                Procurador
+                                            </a>
+                                            <ul class="dropdown-menu-right">
+                                                <li><a href="{{ path("esp_produtividade_esp-reports") }}">Gráficos</a></li>
+                                                <li role="separator" class="divider"></li>
+                                                <li><a href="{{ path('esp_produtividade_esp-criticas') }}">Críticas</a></li>
+                                            </ul>
+                                        </li>
+                                        <li role="separator" class="divider"></li>
+                                        <li class="dropdown-submenu">
+                                            <a tabindex="-1" href="#" rh/afastamento>
+                                                Analista
+                                            </a>
+                                            <ul class="dropdown-menu-right">
+                                                <li><a href="{{ path("esp_produtividade_analista_esp-reports") }}">Gráficos</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown" role="presentation">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        Cadastros
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ path('esp_produtividade_ato_index') }}">Atos</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="{{ path('esp_produtividade_tipo-de-ato_index') }}">Tipos de Atos</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="{{ path('esp_produtividade_tipo-de-processo_index') }}">Tipos de Processos</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="{{ path('lotacao_index') }}">Especializadas (Lotações)</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown" role="presentation">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        Pessoal
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ path("dai_rh_cadastro_index") }}">Cadastros</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="{{ path('dai_rh_afastamento_index') }}">Afastamentos</a></li>
+                                    </ul>
+                                </li>
+                            {% elseif 'ROLE_CHESP' in app.user.roles %}
+
+                                <li class="dropdown" role="presentation">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        Relatórios
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown-submenu">
+                                            <a tabindex="-1" href="#" rh/afastamento>
+                                                Procurador
+                                                <span class="caret"></span>
+                                            </a>
+                                            <ul class="dropdown-menu-right">
+                                                <li><a href="{{ path("esp_produtividade_esp-reports") }}">Gráficos</a></li>
+                                                <li role="separator" class="divider"></li>
+                                                <li><a href="{{ path('esp_produtividade_esp-criticas') }}">Críticas</a></li>
+                                            </ul>
+                                        </li>
+                                        <li role="separator" class="divider"></li>
+                                        <li class="dropdown-submenu">
+                                            <a tabindex="-1" href="#" rh/afastamento>
+                                                Analista
+                                                <span class="caret"></span>
+                                            </a>
+                                            <ul class="dropdown-menu-right">
+                                                <li><a href="{{ path("esp_produtividade_analista_esp-reports") }}">Gráficos</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="dropdown" role="presentation">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        Cadastros
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ path('esp_produtividade_ato_index') }}">Atos</a></li>
+                                    </ul>
+                                </li>
+
+                            {% elseif 'ROLE_ESP' in app.user.roles %}
+
+                                <li class="dropdown" role="presentation">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        Cadastro
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ path('esp_produtividade_ato_index') }}">Atos</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown" role="presentation">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        Relatório
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ path("esp_produtividade_esp-reports-proc") }}">Gráfico</a></li>
+                                    </ul>
+                                </li>
+
+                            {% elseif 'ROLE_AESP' in app.user.roles %}
+
+                                <li class="dropdown" role="presentation">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        Cadastro
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ path('esp_produtividade_analista_ato_index') }}">Atos</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown" role="presentation">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        Relatório
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ path("esp_produtividade_analista_esp-reports-analista") }}">Gráfico</a></li>
+                                    </ul>
+                                </li>
+
+                            {% elseif 'ROLE_DAI' in app.user.roles %}
+                                <li class="dropdown" role="presentation">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        Pessoal
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ path("dai_rh_cadastro_index") }}">Cadastros</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="{{ path('dai_rh_afastamento_index') }}">Afastamentos</a></li>
+                                    </ul>
+                                </li>
+                            {% endif %}
+
+                        {% endif %}
+                    </ul>
+
+                        {% block header %}
+                        {% endblock %}
+
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li role="presentation">
+                            {% if app.user is not null %}
+                                {% set cl = app.session.get('current_location') %}
+                                <form action="{{ path('location_current_set') }}" method="post">
+                                    <select class="navbar-form form-inline" style="margin-top: 15px" name="location_id" onchange="this.form.submit()">
+                                        {% for r in app.user.lotacao %}
+                                            {% if(cl != null and cl.id == r.id) %}
+                                                <option value="{{ r.id }}" selected>{{ r.descricao }}</option>
+                                            {% else %}
+                                                <option value="{{ r.id }}">{{ r.descricao }}</option>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </select>
+                                    <p class="navbar-text" style="color: white">
+                                        <a href="{{ path('fos_user_profile_show') }}" class="navbar-link">
+                                            {{ app.user.nome }}
+                                        </a>
+                                    </p>
+                                </form>
+                            {% endif %}
+                        </li>
+                        <li role="presentation">
+                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                <a href="{{ path('fos_user_security_logout') }}" class="navbar-toggler-icon"
+                                   title="{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}">
+                                    <i class="glyphicon glyphicon-log-out"></i>
+                                </a>
+                            {% else %}
+                                <a href="{{ path('fos_user_security_login') }}"
+                                   class="navbar-toggler-icon"  title="{{ 'layout.login'|trans({}, 'FOSUserBundle') }}">
+                                    <i class="glyphicon glyphicon-user"></i>
+                                </a>
+                            {% endif %}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <main class="container-fluid">
+         <div class="row">
+            <div class="watermark"></div>
+            <div class="watermark-over">
+             <div class="container-fluid">
+            {% block content %}
+            {% endblock %}
+            </div>
+            </div>
+         </div>
+        </main>
+
+        <div class="bg-transparent z-depth-0 noPrint hidden" id="modalajaxloader" tabindex="-1">
+            <div id="modalajaximg">
+                <img src="{{ asset('uploads/images/ajax-loader-lg.gif') }}">
+            </div>
+        </div>
+
+        <footer class="navbar-default">
+        {% block footer %}
+            <div class="container-fluid">
+                <div class="container-fluid" id="footer-container-img" style="color: white">
+                <!-- <img alt="" id="topo-img" src="{{ asset('uploads/images/logopgm.jpg')}}"
+                     class="img-responsive" float="left"> -->
+                    <span class="pull-right footer-text-blue">
+                        © 2018 - PGM Teresina-PI, Todos os direitos reservados<br>
+                        Desenvolvido por Francisco Costa.
+                    </span>
+                </div>
+            </div>
+        {% endblock %}
+        </footer>
+
+        {% block javascripts %}
+            <!-- Imports Scripts -->
+            <script
+                    src="https://code.jquery.com/jquery-3.3.1.min.js"
+                    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+                    crossorigin="anonymous"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+                    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+                    crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+            <script src="https://github.com/makeusabrew/bootbox/releases/download/v4.4.0/bootbox.min.js"></script>
+            <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+            <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
+            <script type="text/javascript">
+                var routeCidadesPorEstado = "{{ path("dai_rh_get-cidades-por-estado") }}";
+            </script>
+            <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
+            <script src="https://unpkg.com/jspdf-autotable@3.1.1/dist/jspdf.plugin.autotable.js"></script>
+            <script src="{{ asset('build/js/app.js') }}"></script>
+
+        {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,56 @@
+{% extends "base.html.twig" %}
+{% block header %}
+{% endblock %}
+
+{% block content %}
+    <div class="fundo-topo-menu">
+        Detalhe de Críticas
+    </div>
+    <br>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="container">
+                <div class="col-md-12 col-xs-12 table-responsive">
+
+                    <h5>Período de {{ dateini|date('d/m/Y') }} a {{ datefim|date('d/m/Y') }}</h5>
+
+                    <table class="table table-hover datatables">
+                        <thead class="rows">
+                        <tr>
+                            <th>Emissão</th>
+                            <th>Procurador</th>
+                            <th>Assunto</th>
+                            <th>Tipo de Ato</th>
+                            <th>Tipo de Processo</th>
+                            <th>Nº do Processo</th>
+                            <th>Descrição</th>
+                            <th>#</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for i in detalhe %}
+                            <tr>
+                                <td>{{ i.emissao|date('d/m/Y') }}</td>
+                                <td>{{ i.nome }}</td>
+                                <td>{{ i.assunto }}</td>
+                                <td>{{ i.tipodeato }}</td>
+                                <td>{{ i.tipodeprocesso }}</td>
+                                <td>{{ i.numerodoprocesso }}</td>
+                                <td>{{ i.descricao }}</td>
+                                <td><a href="{{ path('esp_produtividade_detalhar-ato', {'id':i.id}) }}"
+                                       class="btn btn-default btn-sm">View</a></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <td colspan="8"></td>
+                        </tr>
+                        </tfoot>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

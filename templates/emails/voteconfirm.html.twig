@@ -1,0 +1,9 @@
+<div style="border: black ridge 3px; width: 600px; height:300px;text-align: center; font-family: Arial; position:relative;">
+    <img src="{{ img_src }}" width="128px" height="auto" float="left">
+    <h3>{{ pleito }}</h3>
+    <h2>COMPROVANTE DE VOTAÇÃO</h2>
+    <h3>DATA: {{ datapleito|date('d/m/Y') }}</h3>
+    <h3>{{ eleitor }}</h3>
+    <h4>Matrícula: {{ "%06d"|format(matricula) }}</h4>
+    <h5>{{ chave }}</h5>
+</div>

@@ -1,0 +1,60 @@
+{% extends "base.html.twig" %}
+{% block header %}
+{% endblock %}
+
+{% block content %}
+    <div class="fundo-topo-menu">
+        Listagem de Férias, Licenças, Atestados...
+    </div>
+
+    <br>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-1 col-xs-12">
+                <h4>Ações</h4>
+                <a href="{{ path('dai_rh_afastamento_novo') }}"
+                   class="btn btn-success btn-block">Novo</a>
+            </div>
+            <div class="col-md-10 col-xs-12">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th colspan="6">
+                            {{ knp_pagination_filter(tiposausencia, {
+                                'c.nome':'Servidor',
+                                'b.descricao':'Tipo'
+                            }) }}
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Servidor</th>
+                        <th>Data Início</th>
+                        <th>Data Término</th>
+                        <th>#</th>
+                        <th>#</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for i in tiposausencia %}
+                        <tr>
+                            <td>{{ i.tipoausencia.descricao }}</td>
+                            <td>{{ i.employee.nome }}</td>
+                            <td>{{ i.dataini|date('d/m/Y') }}</td>
+                            <td>{{ i.datafim|date('d/m/Y') }}</td>
+                            <td><a href="{{ path('dai_rh_afastamento_editar', {'id':i.id}) }}"
+                                   class="btn btn-default btn-sm">Editar</a></td>
+                            <td><a href="{{ path('dai_rh_afastamento_deletar', {'id':i.id}) }}"
+                                   onclick="return confirm('Tem certeza?')" class="btn btn-danger btn-sm">Deletar</a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot><tr><td colspan="6"></td></tr></tfoot>
+                </table>
+                <div class="navigation">
+                    {{ knp_pagination_render(tiposausencia) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+{% block content %}
+    <div class="container">
+        <div class="fundo-topo">
+            <h3>Documentos</h3>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-xs-12">
+                {{ form_start(form) }}
+                {{ form_row(form.documento, {'label':'Documentos'}) }}
+                <input class="btn btn-primary" type="submit" value="Enviar" />
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

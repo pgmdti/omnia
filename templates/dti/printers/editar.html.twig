@@ -1,0 +1,34 @@
+{% extends "base.html.twig" %}
+{% block header %}
+{% endblock %}
+
+{% block content %}
+    <div class="fundo-topo-menu">
+        Editar Impressora
+    </div>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-11 col-xs-12">
+                {{ form_start(form) }}
+                <div class="col-md-2 col-xs-12">
+                    {{ form_row(form.id, {'label':'Id'}) }}
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    {{ form_row(form.local, {'label':'Localização'}) }}
+                </div>
+                <div class="col-md-4 col-xs-12">
+                    {{ form_row(form.endereco, {'label':'Endereço IP'}) }}
+                </div>
+                <div class="col-md-12 col-xs-12">
+                    <div class="button-group">
+                        <input type="submit" value="Enviar" class="btn btn-primary"/>
+                        <a href="{{ path('dti_printers_deletar', {'id':form.vars.data.id}) }}"
+                           class="btn btn-danger">Deletar</a>
+                    </div>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

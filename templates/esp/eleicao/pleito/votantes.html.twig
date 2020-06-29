@@ -1,0 +1,48 @@
+{% extends "base.html.twig" %}
+{% block header %}
+{% endblock %}
+
+{% block content %}
+    <div class="fundo-topo-menu">
+        {{ eleicao.titulo }} <br>
+        Data do pleito: {{ eleicao.inicio|date('d/m/Y') }}<br>
+        Horário: {{ eleicao.inicio|date('H:i') }} ás {{ eleicao.termino|date('H:i') }}<br>
+        Relação de Votantes
+    </div>
+
+    <div class="container-fluid">
+        <br>
+        <div class="row">
+            <div class="container">
+                <div class="col-md-12 col-xs-12 table-responsive">
+
+                    <table class="table table-striped">
+
+                        <thead>
+                        <tr>
+                            <th>Matrícula</th>
+                            <th>Nome</th>
+                            <th>Identificação digital do voto</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for i in eleicao.votos %}
+                            <tr>
+                                <td>{{ "%06d"|format(i.eleitor.matricula) }}</td>
+                                <td>{{ i.eleitor.nome|upper }}</td>
+                                <td>{{ i.chave|upper }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <td colspan="3"></td>
+                        </tr>
+                        </tfoot>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends "base.html.twig" %}
+{% block header %}
+{% endblock %}
+
+{% block content %}
+    <div class="fundo-topo-menu">
+        {{ eleicao.titulo }} <br>
+        Data do pleito: {{ eleicao.inicio|date('d/m/Y') }}<br>
+        Horário: {{ eleicao.inicio|date('H:i') }} ás {{ eleicao.termino|date('H:i') }}
+    </div>
+
+    <div class="container-fluid">
+        <br>
+        <div class="row">
+            <div class="container">
+                <div class="col-md-1 col-xs-12 noPrint">
+                    <h4>Ações</h4>
+                    <a href="{{ path('esp_eleicao_candidato_novo', {'eleicaoid':eleicao.id}) }}"
+                       class="btn btn-success btn-block">Novo</a><br>
+                </div>
+                <div class="col-md-11 col-xs-12 table-responsive">
+
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th colspan="4" class="noPrint">
+                                {{ knp_pagination_filter(candidato, {
+                                    'candidato.candidato':'Nome'
+                                }) }}
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Votos</th>
+                            <th class="noPrint">#</th>
+                            <th class="noPrint">#</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for i in candidato %}
+                            <tr>
+                                <td>{{ i.candidato|upper }}</td>
+                                <td>{{ i.total }}</td>
+                                <td><a href="{{ path('esp_eleicao_candidato_editar', {'id':i.id}) }}"
+                                       class="noPrint btn btn-default btn-sm">Editar</a></td>
+                                <td><a href="{{ path('esp_eleicao_candidato_deletar', {'id':i.id}) }}"
+                                       onclick="return confirm('Tem certeza?')" class="noPrint btn btn-danger btn-sm">Deletar</a></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <td colspan="4"></td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                    <div class="navigation">
+                        {{ knp_pagination_render(candidato) }}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

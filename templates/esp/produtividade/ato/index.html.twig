@@ -1,0 +1,97 @@
+{% extends "base.html.twig" %}
+{% block header %}
+{% endblock %}
+
+{% block content %}
+    <div class="fundo-topo-menu">
+        Atos Praticados
+    </div>
+
+    <div class="container-fluid">
+       <div class="row">
+            <div class="col-md-12 col-xs-12">
+                <span>Mostrando {{ atos|length }} registro(s).</span><br/><br/>
+                <form action="{{ path('esp_produtividade_ato_index') }}" method="post">
+                    <label>Início: </label>
+                    <input type="date" name="_dateini" value="{{ dateini }}">
+                    <label>Fim: </label>
+                    <input type="date" name="_datefim" value="{{ datefim }}">
+                    <input type="submit" value="Enviar">
+                </form>
+            </div>
+       </div>
+        <br>
+        <div class="row">
+            <div class="container">
+                <div class="col-md-1 col-xs-12">
+                    <h4>Ações</h4>
+                    <a href="{{ path('esp_produtividade_ato_novo') }}"
+                       class="btn btn-success">Novo</a>
+                </div>
+                <div class="col-md-11 col-xs-12 table-responsive">
+
+                        <table class="table table-hover">
+                            <thead class="rows">
+                                <tr>
+                                    <th colspan="10">
+                                        {{ knp_pagination_filter(atos, {
+                                            'u.numero':'Nº do Ato',
+                                            'u.assunto':'Assunto',
+                                            'b.descricao':'Especializada',
+                                            'u.numerodoprocesso':'Número do Processo',
+                                            'c.descricao':'Tipo de Ato',
+                                            'd.descricao':'Tipo de Processo'
+                                        }) }}
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th>{{ knp_pagination_sortable(atos, 'Nº do Ato', 'u.numero') }}</th>
+                                    <th>{{ knp_pagination_sortable(atos, 'Data', 'u.emissao') }}</th>
+                                    <th>{{ knp_pagination_sortable(atos, 'Especializada', 'b.descricao') }}</th>
+                                    <th>{{ knp_pagination_sortable(atos, 'Tipo de Ato', 'c.descricao') }}</th>
+                                    <th>{{ knp_pagination_sortable(atos, 'Assunto', 'u.assunto') }}</th>
+                                    <th>{{ knp_pagination_sortable(atos, 'Tipo de Processo', 'd.descricao') }}</th>
+                                    <th>{{ knp_pagination_sortable(atos, 'Nº Processo', 'u.numerodoprocesso') }}</th>
+                                    <th>#</th>
+                                    <th>#</th>
+                                    <th>#</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for i in atos %}
+                                <tr>
+                                    <td>{{ i.numero }}</td>
+                                    <td>{{ i.emissao|date('d/m/Y') }}</td>
+                                    <td>{{ i.lotacao }}</td>
+                                    <td>{{ i.tipodeato }}</td>
+                                    <td>{{ i.assunto }}</td>
+                                    {% set processo = '' %}
+                                    {% if i.tipodeprocesso is not null %}
+                                        {% set processo = i.tipodeprocesso %}
+                                    {% endif %}
+                                    <td>{{ processo }}</td>
+                                    <td>{{ i.numerodoprocesso }}</td>
+                                    <td><a href="{{ path('esp_produtividade_ato_detalhe', {'id':i.id}) }}"
+                                           class="btn btn-default btn-sm">Ver</a></td>
+                                    <td><a href="{{ path('esp_produtividade_ato_editar', {'id':i.id}) }}"
+                                           class="btn btn-success btn-sm">Editar</a></td>
+                                    <td><a href="{{ path('esp_produtividade_ato_deletar', {'id':i.id}) }}"
+                                           onclick="return confirm('Tem certeza?')" class="btn btn-danger btn-sm">Deletar</a></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="10"></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        <div class="navigation">
+                            {{ knp_pagination_render(atos) }}
+                        </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

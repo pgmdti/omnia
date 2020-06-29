@@ -1,0 +1,43 @@
+{% extends "base.html.twig" %}
+{% block header %}
+{% endblock %}
+{% block content %}
+    <div class="fundo-topo-menu">
+        Listagem de Órgãos
+    </div>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1 col-xs-12">
+                <h4>Ações</h4>
+                <a href="{{ path('dai_rh_orgao_novo') }}"
+                   class="btn btn-success btn-block">Novo</a>
+            </div>
+            <div class="col-md-10 col-xs-12">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Descrição</th>
+                            <th>#</th>
+                            <th>#</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                {% for i in orgaos %}
+                    <tr>
+                        <td>{{ i.id }}</td>
+                        <td>{{ i.descricao }}</td>
+                        <td><a href="{{ path('dai_rh_orgao_editar', {'id':i.id}) }}"
+                               class="btn btn-default btn-sm">Editar</a></td>
+                        <td><a href="{{ path('dai_rh_orgao_deletar', {'id':i.id}) }}"
+                               onclick="return confirm('Tem certeza?')" class="btn btn-danger btn-sm">Deletar</a></td>
+                    </tr>
+                {% endfor %}
+                    </tbody>
+                    <tfoot><tr><td colspan="4"></td></tr></tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

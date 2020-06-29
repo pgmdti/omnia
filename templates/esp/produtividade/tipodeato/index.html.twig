@@ -1,0 +1,63 @@
+{% extends "base.html.twig" %}
+{% block header %}
+{% endblock %}
+
+{% block content %}
+    <div class="fundo-topo-menu">
+        Tipos de Ato
+    </div>
+
+    <div class="container-fluid">
+        <br>
+        <div class="row">
+            <div class="container">
+                <div class="col-md-1 col-xs-12">
+                    <h4>Ações</h4>
+                    <a href="{{ path('esp_produtividade_tipo-de-ato_novo') }}"
+                       class="btn btn-success">Novo</a><br>
+                </div>
+                <div class="col-md-11 col-xs-12 table-responsive">
+
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th colspan="4">
+                                    {{ knp_pagination_filter(tpatos, {
+                                        'tpa.descricao':'Descricao'
+                                    }) }}
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>Descrição</th>
+                                <th>Peso</th>
+                                <th>#</th>
+                                <th>#</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for i in tpatos %}
+                                <tr>
+                                    <td>{{ i.descricao }}</td>
+                                    <td>{{ (i.peso)|number_format(2, ',', '.') }}</td>
+                                    <td><a href="{{ path('esp_produtividade_tipo-de-ato_editar', {'id':i.id}) }}"
+                                           class="btn btn-default btn-sm">Editar</a></td>
+                                    <td><a href="{{ path('esp_produtividade_tipo-de-ato_deletar', {'id':i.id}) }}"
+                                           onclick="return confirm('Tem certeza?')" class="btn btn-danger btn-sm">Deletar</a></td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                            <tfoot>
+                            <tr>
+                                <td colspan="8"></td>
+                            </tr>
+                            </tfoot>
+                        </table>
+                        <div class="navigation">
+                            {{ knp_pagination_render(tpatos) }}
+                        </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

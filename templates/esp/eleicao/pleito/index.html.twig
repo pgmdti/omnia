@@ -1,0 +1,67 @@
+{% extends "base.html.twig" %}
+{% block header %}
+{% endblock %}
+
+{% block content %}
+    <div class="fundo-topo-menu">
+        Listagem de Pleitos
+    </div>
+
+    <br>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-1 col-xs-12">
+                <h4>Ações</h4>
+
+                <a href="{{ path('esp_eleicao_pleito_novo') }}"
+                   class="btn btn-success btn-block">Novo</a>
+
+            </div>
+            <div class="col-md-10 col-xs-12">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th colspan="8">
+                            {{ knp_pagination_filter(eleicao, {
+                                'u.titulo':'Titulo'
+                            }) }}
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>{{ knp_pagination_sortable(eleicao, 'Id', 'u.id') }}</th>
+                        <th>{{ knp_pagination_sortable(eleicao, 'Titulo', 'u.titulo') }}</th>
+                        <th>{{ knp_pagination_sortable(eleicao, 'Início', 'u.inicio') }}</th>
+                        <th>{{ knp_pagination_sortable(eleicao, 'Término', 'u.termino') }}</th>
+                        <th>#</th>
+                        <th>#</th>
+                        <th>#</th>
+                        <th>#</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for i in eleicao %}
+                        <tr>
+                            <td>{{ "%06d"|format(i.id) }}</td>
+                            <td>{{ i.titulo }}</td>
+                            <td>{{ i.inicio|date('d/m/Y H:i') }}</td>
+                            <td>{{ i.termino|date('d/m/Y H:i') }}</td>
+                            <td><a href="{{ path('esp_eleicao_candidato_index', {'pleitoid':i.id}) }}"
+                                   class="btn btn-primary btn-sm btn-block">Candidatos</a></td>
+                            <td><a href="{{ path('esp_eleicao_pleito_votantes', {'id':i.id}) }}"
+                                    class="btn btn-success btn-sm btn-block">Eleitores</a></td>
+                            <td><a href="{{ path('esp_eleicao_pleito_editar', {'id':i.id}) }}"
+                                   class="btn btn-default btn-sm">Editar</a></td>
+                            <td><a href="{{ path('esp_eleicao_pleito_deletar', {'id':i.id}) }}"
+                                   onclick="return confirm('Tem certeza?')" class="btn btn-danger btn-sm">Deletar</a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot><tr><td colspan="8"></td></tr></tfoot>
+                </table>
+                <div class="navigation">
+                    {{ knp_pagination_render(eleicao) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

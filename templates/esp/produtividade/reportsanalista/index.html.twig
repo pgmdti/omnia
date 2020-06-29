@@ -1,0 +1,112 @@
+{% extends "base.html.twig" %}
+{% block header %}
+{% endblock %}
+
+{% block content %}
+
+    <div>
+
+
+                <form action="{{ path('esp_produtividade_analista_esp-filter-reports') }}" method="post"
+                    id="esp_form_filter" class="form-inline noPrint">
+
+                    <label>Início: </label>
+                    <input type="date" class="form-control" id="_dateini" name="_dateini" value="{{ dateini }}">
+
+                    <label>Fim: </label>
+                    <input type="date" class="form-control" id="_datefim" name="_datefim" value="{{ datefim }}">
+
+                    <label>Tipo de Filtro: </label>
+                    <select name="_filterType" id="esp_type_filter_analista"
+                            base-url="{{ path('esp_produtividade_analista_esp-filters') }}"
+                    class="form-control">
+                        <option value="9">Especializada</option>
+                        <option value="1">Procuradores</option>
+                        <option value="2">Analistas</option>
+                        <option value="3">Tipos de Ato</option>
+                    </select>
+
+                    <label>Filtrar por: </label>
+                    <select name="_filterValue" id="esp_value_filter" class="form-control">
+                        <option value="0">Todos</option>
+                        {%  for lotacao in lotacoes %}
+                            <option value="{{ lotacao.id }}">{{ lotacao.descricao }}</option>
+                        {% endfor %}
+                    </select>
+
+                    <input type="submit" class="btn btn-sm btn-primary mySpinner" value="Enviar">
+                    <input type="hidden" name="_download-report" value="no" id="_download-report">
+
+                </form>
+                <br>
+
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+            <div class="col-md-10 col-sm-10 col-xs-12" id="div_partial">
+                {{ include('esp/produtividade/reportsanalista/esp_partial.html.twig') }}
+            </div>
+
+    </div>
+
+    <script type="text/javascript">
+
+        function onChartClickItem(urlaction, typefilter, valuefilter, valueselection, dateinifilter, datefimfilter){
+            console.log("Tipo de filtro: "+typefilter, " Valor filtro: "+valuefilter, " Seleção: "+valueselection);
+            var datacall = {
+                '_typefilter':typefilter,
+                '_valuefilter':valuefilter,
+                '_valueselection':valueselection,
+                '_dateinifilter':dateinifilter,
+                '_datefimfilter':datefimfilter
+            };
+
+            $.ajax({
+                type: "POST",
+                url: urlaction,
+                dataType: "json",
+                data: datacall,
+                success: function (response) {
+                    $("#div_partial").html(response);
+                },
+                error: function(XmlHttpRequest,textStatus, errorThrown){
+
+                    alert("Selecione um item em 'Filtrar por:' !! ");
+                }
+            });
+
+        };
+
+        function turnBackToListActs(urlaction) {
+
+            $.ajax({
+                type: "GET",
+                url: urlaction,
+                dataType: "json",
+                success: function (response) {
+                    $("#div_partial").html(response);
+                },
+                error: function(XmlHttpRequest,textStatus, errorThrown){
+
+                    alert("Falha ao carregar! ");
+                }
+            });
+        }
+
+        function viewDetailsAct(urlaction){
+
+            $.ajax({
+                type: "GET",
+                url: urlaction,
+                dataType: "json",
+                success: function (response) {
+                    $("#div_partial").html(response);
+                },
+                error: function(XmlHttpRequest,textStatus, errorThrown){
+                    alert(textStatus+" : "+errorThrown);
+                }
+            });
+        }
+
+    </script>
+
+{% endblock %}

@@ -1,0 +1,50 @@
+security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: bcrypt
+
+    role_hierarchy:
+        ROLE_ADMIN:       [ROLE_ADMIN, ROLE_CGR, ROLE_DAI, ROLE_DTI, ROLE_ESP]
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
+
+    providers:
+        fos_userbundle:
+                id: fos_user.user_provider.username_email
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            pattern: ^/
+            form_login:
+              provider: fos_userbundle
+              csrf_token_generator: security.csrf.token_manager
+              use_referer: false
+              success_handler: redirect.after.login
+
+            logout:
+              path: fos_user_security_logout
+              target: fos_user_security_login
+
+            anonymous: true
+
+            access_denied_handler: App\Security\AccessDeniedHandler
+
+    access_control:
+        - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/dti/printers/status, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/home, roles: [ROLE_CGR, ROLE_DAI, ROLE_DTI, ROLE_ESP, ROLE_CHESP, ROLE_AESP, ROLE_ADMIN ] }
+        - { path: ^/profile, roles: [ROLE_CGR, ROLE_DAI, ROLE_DTI, ROLE_ESP, ROLE_CHESP, ROLE_AESP, ROLE_ADMIN ] }
+        - { path: ^/dai, roles: [ROLE_DAI, ROLE_CGR] }
+        - { path: ^/dti, roles: ROLE_DTI }
+        - { path: ^/esp/produtividade/analista, roles: [ROLE_CGR, ROLE_ESP, ROLE_CHESP, ROLE_AESP] }
+        - { path: ^/esp/produtividade/ato, roles: [ROLE_CGR, ROLE_ESP, ROLE_CHESP] }
+        - { path: ^/esp/produtividade/rels, roles: [ROLE_CGR, ROLE_ESP, ROLE_CHESP, ROLE_AESP] }
+        - { path: ^/esp/eleicao/voto, roles: [ROLE_CGR, ROLE_ESP, ROLE_CHESP] }
+        - { path: ^/location, roles: [ROLE_CGR, ROLE_ESP, ROLE_CHESP, ROLE_AESP] }
+        - { path: ^/lotacao, roles: [ROLE_CGR, ROLE_ADMIN] }
+        - { path: ^/esp, roles: [ROLE_CGR, ROLE_ADMIN] }
+        - { path: ^/, roles: ROLE_ADMIN }

@@ -1,0 +1,139 @@
+{% extends "base.html.twig" %}
+{% block content %}
+<div class="fundo-topo-menu">
+    Procuradoria Geral do Município - Status das Impressoras
+</div>
+
+    <div class="container-fluid">
+<div class="table-responsive"><hr>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Localização</th>
+        <th>Endereço IP</th>
+        <th>Modelo</th>
+        <th>Nº Série</th>
+        <th>Toner</th>
+        <th>Últ.Troca</th>
+        <th>Imagem</th>
+        <th>Manutenção</th>
+        <th>Situação</th>
+    </tr>
+    </thead>
+    <tbody>
+
+        {% for p in list_printers %}
+
+        {% set cor_toner  = '' %}
+        {% set cor_imagem  = '' %}
+        {% set cor_manut  = '' %}
+        {% set cor_linha  = '' %}
+
+        {%
+            if p.getStatusToner() < 31 %}
+                {% set cor_toner = "tr-orange-color" %}
+        {%    endif  %}
+        {%
+            if p.getStatusToner() < 21  %}
+                {% set cor_toner = "tr-red-color" %}
+        {%    endif
+        %}
+
+        {%
+            if p.getStatusImagem() < 16 %}
+                {% set cor_imagem = 'tr-orange-color' %}
+        {%    endif %}
+        {%    if p.getStatusImagem() < 11 %}
+                {% set cor_imagem = 'tr-red-color' %}
+        {%    endif
+        %}
+
+        {%
+            if p.getKitManutencao() < 16 %}
+            {% set cor_manut = 'tr-orange-color' %}
+        {%    endif %}
+        {%    if p.getKitManutencao() < 11 %}
+            {% set cor_manut = 'tr-red-color' %}
+        {%    endif
+        %}
+
+        {% if p.getOnOff() == 'DESLIGADA' %}
+            {% set cor_linha = 'tr-black-color' %}
+            {% set cor_toner = '' %}
+            {% set cor_imagem = '' %}
+            {% set cor_manut = '' %}
+        {% endif %}
+
+        {% if p.getOnOff() == 'LIGADA' and p.getStatusToner() == '' %}
+            {% set cor_linha = 'tr-red-color' %}
+        {% endif %}
+
+        {% if p.getOnOff() == 'ERRO' %}
+            {% set cor_linha = 'tr-red-color' %}
+        {% endif %}
+
+            <tr class='{{cor_linha}}'>
+            <td><a href="http://{{ p.getEndereco() }}">{{p.getLocal()}}</a></td>
+            <td>{{p.getEndereco()}}<a href="{{ path('dti_printers_editar', {'id':p.getId()}) }}">
+                    <i class="glyphicon glyphicon-pencil"></i>
+                </a></td>
+            <td>{{p.getModelo()}}</td>
+            <td>{{p.getSerial()}}</td>
+            <td class='{{cor_toner}}'>{{p.getStatusToner()}}</td>
+            <td>{{p.getUltimaTroca()|date('d/m/Y')}}</td>
+            <td class='{{cor_imagem}}'>{{p.getStatusImagem()}}</td>
+            <td class='{{cor_manut}}'>{{p.getKitManutencao()}}</td>
+            <td>
+                <a href="#" data-toggle="tooltip" data-placement="top"
+                    title="{{ p.getMensagem() }}">
+                    {{p.getOnOff()}}
+                </a>
+            </td>
+        </tr>
+
+        {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2">Legenda (Toner):
+                    <table class="table table-bordered">
+                        <tr>
+                            <td class="tr-orange-color"> abaixo de 30%</td>
+                            <td class="tr-red-color"> abaixo de 20%</td>
+                        </tr>
+                    </table>
+                </td>
+                <td></td>
+                <td colspan="3">Legenda (Imagem / Manutenção):
+                    <table class="table table-bordered">
+                        <tr>
+                            <td class="tr-orange-color"> abaixo de 15%</td>
+                            <td class="tr-red-color"> abaixo de 10%</td>
+                        </tr>
+                    </table>
+                </td>
+                <td colspan="3">
+                    Cadastar nova impressora:
+                    <br>
+                    <a href="{{ path('dti_printers_novo') }}" title="Nova Impressora"
+                       class="btn btn-md btn-primary">
+                        <i class="glyphicon glyphicon-new-window"></i>
+                    </a></td>
+            </tr>
+            <tr>
+                <td colspan="9">Obs.: a data da última troca está relacionada
+                    a data registrada no dispositivo e pode não corresponder com a realidade.</td>
+            </tr>
+            <tr><td colspan="9"></td></tr>
+        </tfoot>
+</table>
+</div>
+</div>
+
+<script>
+    setTimeout(function(){
+        window.location.reload(1);
+    }, 300000);
+</script>
+
+{% endblock %}

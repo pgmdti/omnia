@@ -1,0 +1,53 @@
+{% extends "base.html.twig" %}
+{% block header %}
+{% endblock %}
+
+{% block content %}
+
+    <div class="fundo-topo-menu">
+        Gerar Relatório Sintético de Críticas
+    </div>
+    <br><br><br>
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-md-4"></div>
+
+            <div class="col-md-4 col-xs-12">
+
+                <div class="jumbotron fundo-shadow">
+
+                    <form action="{{ path('esp_produtividade_esp-criticas-report') }}" method="post">
+
+                        <div class="col-md-8 col-xs-12">
+                            <label>Data inicial: </label>
+                            <input class="form-control" type="date" name="_dateini" value="{{ dateini }}">
+                        </div>
+
+                        <div class="row"></div>
+                        <br><br>
+
+                        <div class="col-md-8 col-xs-12">
+                            <label>Data final: </label>
+                            <input class="form-control" type="date" name="_datefim" value="{{ datefim }}">
+                        </div>
+                        <div class="row"></div>
+
+                        <br>
+                        <div class="col-md-8 col-xs-12">
+                            <input class="btn btn-primary" type="submit" value="Enviar">
+                        </div>
+                        <br>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4"></div>
+
+        </div>
+    </div>
+
+{% endblock %}

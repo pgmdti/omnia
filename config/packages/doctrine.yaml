@@ -7,6 +7,8 @@ parameters:
 
 doctrine:
     dbal:
+        logging: true #debug
+        profiling: true #debug
         # configure these for your database server
         driver: 'pdo_mysql'
         server_version: '5.7'

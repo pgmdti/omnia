@@ -1,0 +1,24 @@
+{% extends "base.html.twig" %}
+{% block header %}
+
+    <a href="{{ path('index_geral') }}" class="navbar-brand" title="Home">
+        <i class="glyphicon glyphicon-home"></i>
+    </a>
+
+    <div class="fundo-topo-menu">
+        Cadastro de Chamado
+    </div>
+
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-xs-12">
+                {{ form_start(form) }}
+                    {{ form_row(form.nome, {'label':'Nome'}) }}
+                    <input type="submit" value="Enviar" class="btn btn-primary"/>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

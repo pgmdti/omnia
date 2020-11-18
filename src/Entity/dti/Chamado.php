@@ -5,7 +5,10 @@ namespace App\Entity\dti;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\ChamadoRepository")
+ * Class Chamado
+ * @package App\Entity\dti
+ * @ORM\Entity
+ * @ORM\Table(name="chamado")
  */
 class Chamado
 {
@@ -17,31 +20,31 @@ class Chamado
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Departamento", inversedBy="chamados")
+     * @ORM\ManyToOne(targetEntity="App\Entity\dai\rh\Departamento", inversedBy="chamados")
      * @ORM\JoinColumn(name="departamento_id", referencedColumnName="id")
      */
     protected $departamento;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Employee", inversedBy="chamados")
-     * @ORM\JoinColumn(name="responsavel_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="App\Entity\dai\rh\Employee", inversedBy="chamados")
+     * @ORM\JoinColumn(name="responsavel", referencedColumnName="matricula")
      */
     protected $responsavel;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Employee", inversedBy="chamados")
-     * @ORM\JoinColumn(name="criado_por_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="App\Entity\dai\rh\Employee", inversedBy="chamados")
+     * @ORM\JoinColumn(name="criado_por", referencedColumnName="matricula")
      */
     protected $criado_por;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Employee", inversedBy="chamados")
-     * @ORM\JoinColumn(name="solicitado_por_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="App\Entity\dai\rh\Employee", inversedBy="chamados")
+     * @ORM\JoinColumn(name="solicitado_por", referencedColumnName="matricula")
      */
     protected $solicitado_por;
 
     /**
-     * @ORM\Column(name="titulo", type="varchar", length=255, nullable=false)
+     * @ORM\Column(name="titulo", type="string", length=255, nullable=false)
      */
     protected $titulo;
 
@@ -51,7 +54,7 @@ class Chamado
     protected $descricao;
 
     /**
-     * @ORM\Column(name="status", type="varchar", length=20, nullable=false)
+     * @ORM\Column(name="status", type="string", length=20, nullable=false)
      */
     protected $status;
 

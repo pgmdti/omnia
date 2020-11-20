@@ -2,48 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6e07630d-b700-4837-8dce-d071d506b6d8" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/Controller/dai/rh/CargoController.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/Entity/dai/rh/Cargo.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/templates/esp/produtividade/ato/view.html.twig" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/templates/esp/produtividade/reports/list-acts.html.twig" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/templates/users/edit.html.twig" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/templates/users/index.html.twig" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/assets/js/app.css" afterPath="$PROJECT_DIR$/assets/js/app.css" />
-      <change beforePath="$PROJECT_DIR$/assets/js/app.js" afterPath="$PROJECT_DIR$/assets/js/app.js" />
-      <change beforePath="$PROJECT_DIR$/conf/httpd-app.conf" afterPath="$PROJECT_DIR$/conf/httpd-app.conf" />
-      <change beforePath="$PROJECT_DIR$/conf/httpd-prefix.conf" afterPath="$PROJECT_DIR$/conf/httpd-prefix.conf" />
-      <change beforePath="$PROJECT_DIR$/conf/httpd-vhosts.conf" afterPath="$PROJECT_DIR$/conf/httpd-vhosts.conf" />
-      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" afterPath="$PROJECT_DIR$/config/packages/security.yaml" />
-      <change beforePath="$PROJECT_DIR$/config/routes.yaml" afterPath="$PROJECT_DIR$/config/routes.yaml" />
-      <change beforePath="$PROJECT_DIR$/public/build/js/app.css" afterPath="$PROJECT_DIR$/public/build/js/app.css" />
-      <change beforePath="$PROJECT_DIR$/public/js/fos_js_routes.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/dai/rh/AusenciaController.php" afterPath="$PROJECT_DIR$/src/Controller/dai/rh/AusenciaController.php" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/esp/produtividade/ProdutividadeController.php" afterPath="$PROJECT_DIR$/src/Controller/esp/produtividade/ProdutividadeController.php" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" afterPath="$PROJECT_DIR$/src/Entity/User.php" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/UserFormType.php" afterPath="$PROJECT_DIR$/src/Entity/UserFormType.php" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/dai/rh/Ausencia.php" afterPath="$PROJECT_DIR$/src/Entity/dai/rh/Ausencia.php" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/dai/rh/Documento.php" afterPath="$PROJECT_DIR$/src/Entity/dai/rh/Documento.php" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/dai/rh/Employee.php" afterPath="$PROJECT_DIR$/src/Entity/dai/rh/Employee.php" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/dai/rh/EmployeeFormType.php" afterPath="$PROJECT_DIR$/src/Entity/dai/rh/EmployeeFormType.php" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/dti/printers/Status.php" afterPath="$PROJECT_DIR$/src/Entity/dti/printers/Status.php" />
-      <change beforePath="$PROJECT_DIR$/src/Resources/FOSUserBundle/views/Profile/show_content.html.twig" afterPath="$PROJECT_DIR$/src/Resources/FOSUserBundle/views/Profile/show_content.html.twig" />
-      <change beforePath="$PROJECT_DIR$/src/Resources/FOSUserBundle/views/Registration/register_content.html.twig" afterPath="$PROJECT_DIR$/src/Resources/FOSUserBundle/views/Registration/register_content.html.twig" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" afterPath="$PROJECT_DIR$/templates/base.html.twig" />
-      <change beforePath="$PROJECT_DIR$/templates/dai/rh/cadastro/editar.html.twig" afterPath="$PROJECT_DIR$/templates/dai/rh/cadastro/editar.html.twig" />
-      <change beforePath="$PROJECT_DIR$/templates/dai/rh/cadastro/index.html.twig" afterPath="$PROJECT_DIR$/templates/dai/rh/cadastro/index.html.twig" />
-      <change beforePath="$PROJECT_DIR$/templates/dai/rh/cadastro/novo.html.twig" afterPath="$PROJECT_DIR$/templates/dai/rh/cadastro/novo.html.twig" />
-      <change beforePath="$PROJECT_DIR$/templates/esp/produtividade/ato/index.html.twig" afterPath="$PROJECT_DIR$/templates/esp/produtividade/ato/index.html.twig" />
-      <change beforePath="$PROJECT_DIR$/templates/esp/produtividade/reports/esp_partial.html.twig" afterPath="$PROJECT_DIR$/templates/esp/produtividade/reports/esp_partial.html.twig" />
-      <change beforePath="$PROJECT_DIR$/templates/esp/produtividade/reports/index.html.twig" afterPath="$PROJECT_DIR$/templates/esp/produtividade/reports/index.html.twig" />
-      <change beforePath="$PROJECT_DIR$/templates/esp/produtividade/tipodeato/index.html.twig" afterPath="$PROJECT_DIR$/templates/esp/produtividade/tipodeato/index.html.twig" />
-      <change beforePath="$PROJECT_DIR$/templates/esp/produtividade/tipodeprocesso/index.html.twig" afterPath="$PROJECT_DIR$/templates/esp/produtividade/tipodeprocesso/index.html.twig" />
-      <change beforePath="$PROJECT_DIR$/templates/lotacao/index.html.twig" afterPath="$PROJECT_DIR$/templates/lotacao/index.html.twig" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" afterPath="$PROJECT_DIR$/yarn.lock" />
+      <change afterPath="$PROJECT_DIR$/.idea/symfony2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/omnia.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/omnia.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/dti/ChamadoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/dti/ChamadoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/dti/Chamado.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/dti/Chamado.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/dti/chamado/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/dti/chamado/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/dti/chamado/novo.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/dti/chamado/novo.html.twig" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,6 +19,7 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+    <execution />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
@@ -272,7 +241,10 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true">
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/symfony/serializer-pack" />
       <path value="$PROJECT_DIR$/vendor/symfony/doctrine-bridge" />
@@ -379,6 +351,9 @@
       <path value="$PROJECT_DIR$/vendor/knplabs/knp-snappy-bundle" />
       <path value="$PROJECT_DIR$/vendor/knplabs/knp-snappy" />
       <path value="$PROJECT_DIR$/vendor/beberlei/DoctrineExtensions" />
+      <path value="$PROJECT_DIR$/vendor/symfony/webpack-encore-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/contracts" />
+      <path value="$PROJECT_DIR$/vendor/league/csv" />
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
@@ -387,6 +362,7 @@
     <option name="width" value="1346" />
     <option name="height" value="688" />
   </component>
+  <component name="ProjectId" id="1kYmvrtNvUZG4459EF6i127YzNM" />
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
       <profile-state>
@@ -708,18 +684,27 @@
       <pane id="Scope" />
     </panes>
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
-    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/AppData/Roaming/npm/node_modules/eslint" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/bin/console" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Console Colors" />
-    <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.selected.package.eslint" value="C:\Users\fcoco\AppData\Roaming\npm\node_modules\eslint" />
-    <property name="node.js.path.for.package.standard" value="project" />
     <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.selected.package.eslint" value="C:/Users/fcoco/AppData/Roaming/npm/node_modules/eslint" />
     <property name="node.js.selected.package.standard" value="" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -737,29 +722,7 @@
       <recent name="C:\Bitnami\wampstack-7.0.28-0\frameworks\omnia\src\Entity\dti\printers" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager">
-    <configuration name="autoload_static.php" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/omnia/composer/autoload_static.php" />
-    <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.autoload_static.php" />
-      </list>
-    </recent_temporary>
-  </component>
-  <component name="ShelveChangesManager" show_recycled="false">
-    <option name="remove_strategy" value="false" />
-  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -875,6 +838,12 @@
       <workItem from="1532446800757" duration="2094000" />
       <workItem from="1532516742427" duration="13715000" />
       <workItem from="1532603314228" duration="7251000" />
+      <workItem from="1605886136927" duration="65000" />
+      <workItem from="1605886215936" duration="37000" />
+      <workItem from="1605886261176" duration="126000" />
+      <workItem from="1605886395158" duration="32000" />
+      <workItem from="1605886434371" duration="55000" />
+      <workItem from="1605886498186" duration="1628000" />
     </task>
     <servers />
   </component>
@@ -908,7 +877,18 @@
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -936,9 +916,11 @@
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="4" />
     </breakpoint-manager>
-    <watches-manager />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/templates/esp/produtividade/tipodeato/index.html.twig">

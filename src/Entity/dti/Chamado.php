@@ -77,4 +77,148 @@ class Chamado
      * @ORM\Column(name="solucaoadotada", type="text", length=65535, nullable=true)
      */
     protected $solucaoadotada;
+
+    /**
+     * @return mixed
+     */
+    public function getTitulo()
+    {
+        return $this->titulo;
+    }
+
+    /**
+     * @param mixed $titulo
+     */
+    public function setTitulo($titulo)
+    {
+        $this->titulo = $titulo;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param mixed $status
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSolicitadoPor()
+    {
+        return $this->solicitado_por;
+    }
+
+    /**
+     * @param mixed $solicitado_por
+     */
+    public function setSolicitadoPor($solicitado_por)
+    {
+        $this->solicitado_por = $solicitado_por;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getResponsavel()
+    {
+        return $this->responsavel;
+    }
+
+    /**
+     * @param mixed $responsavel
+     */
+    public function setResponsavel($responsavel)
+    {
+        $this->responsavel = $responsavel;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCriadoPor()
+    {
+        return $this->criado_por;
+    }
+
+    /**
+     * @param mixed $criado_por
+     */
+    public function setCriadoPor($criado_por)
+    {
+        $this->criado_por = $criado_por;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDataabertura()
+    {
+        return $this->dataabertura;
+    }
+
+    /**
+     * @param mixed $dataabertura
+     */
+    public function setDataabertura($dataabertura)
+    {
+        $this->dataabertura = $dataabertura;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDatafechamento()
+    {
+        return $this->datafechamento;
+    }
+
+    /**
+     * @param mixed $datafechamento
+     */
+    public function setDatafechamento($datafechamento)
+    {
+        $this->datafechamento = $datafechamento;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSolucaoadotada()
+    {
+        return $this->solucaoadotada;
+    }
+
+    /**
+     * @param mixed $solucaoadotada
+     */
+    public function setSolucaoadotada($solucaoadotada)
+    {
+        $this->solucaoadotada = $solucaoadotada;
+    }
 }

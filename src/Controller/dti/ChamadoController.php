@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\dti\Chamado;
 
@@ -27,7 +28,13 @@ class ChamadoController extends Controller
         $entityManager = $this->getDoctrine()->getManager();
 
         $form = $this->createFormBuilder($chamado)
-            ->add('nome', TextType::class)
+            ->add('titulo', TextType::class)
+            ->add('status', ChoiceType::class, [
+                'choices' => [
+                    'Aberto' => 'aberto',
+                    'Em andamento' => 'andamento',
+                ]
+            ])
             ->getForm();
 
         $form->handleRequest($request);
@@ -99,23 +106,23 @@ class ChamadoController extends Controller
 
             $entityManager->remove($chamado);
             $entityManager->flush();
-            return $this->redirectToRoute('dti_listar_chamados');
+            return $this->redirectToRoute('dti_listar_chamados');   
 
     }
 
 
     /**
-     * @Route ("/dti/chamado", name="dti_listar_chamado")
+     * @Route ("/dti/chamado", name="dti_listar_chamados")
      * @return Response|\Symfony\Component\HttpFoundation\Response
      */
     public function index(){
 
-        $dptos = $this->getDoctrine()
+        $chamados = $this->getDoctrine()
             ->getRepository(Chamado::class)
             ->findAll();
 
         return $this->render("dti/chamado/index.html.twig", array(
-            'deptos' => $dptos
+            'chamados' => $chamados
         ));
     }
 

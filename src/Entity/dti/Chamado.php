@@ -221,4 +221,52 @@ class Chamado
     {
         $this->solucaoadotada = $solucaoadotada;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getDescricao()
+    {
+        return $this->descricao;
+    }
+
+    /**
+     * @param mixed $descricao
+     */
+    public function setDescricao($descricao)
+    {
+        $this->descricao = $descricao;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDatacadastro()
+    {
+        return $this->datacadastro;
+    }
+
+    /**
+     * @param mixed $datacadastro
+     */
+    public function setDatacadastro($datacadastro)
+    {
+        $this->datacadastro = $datacadastro;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDepartamento()
+    {
+        return $this->departamento;
+    }
+
+    /**
+     * @param mixed $departamento
+     */
+    public function setDepartamento($departamento)
+    {
+        $this->departamento = $departamento;
+    }
 }

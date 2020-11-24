@@ -5,9 +5,6 @@
 {% block content %}
     <div class="fundo-topo-menu">
         Listagem de chamados
-        <a href="#!" title="Exportar para PDF" id="_btn-gera-pdf-employees" class="pull-right">
-            <img src="{{ asset('uploads/images/logo_pdf.png') }}" width="32" height="auto" float="right">
-        </a>
     </div>
     <div class="container-fluid">
         <div class="row">
@@ -21,16 +18,22 @@
                     <thead>
                     <tr>
                         <th>Titulo</th>
+                        <th>Status</th>
                         <th>Data Abertura</th>
                         <th>Data Fechamento</th>
+                        <th>Opções</th>
                     </tr>
                     </thead>
                     <tbody>
                     {% for i in chamados %}
                         <tr>
                             <td>{{ i.titulo }}</td>
-                            <td>{{ i.dataabertura }}</td>
-                            <td>{{ i.datafechamento }}</td>
+                            <td>{{ i.status }}</td>
+                            <td>{{ i.dataabertura is empty ? "" : i.dataabertura.format('d/m/Y') }}</td>
+                            <td>{{ i.datafechamento is empty ? "" : i.datafechamento.format('d/m/Y') }}</td>
+                            <td><a href="{{ path('dti_chamado_editar', {'id':i.id}) }}"
+                                   class="btn btn-default btn-sm">Editar</a> <a href="{{ path('dti_chamado_deletar', {'id':i.id}) }}"
+                                   onclick="return confirm('Tem certeza?')" class="btn btn-danger btn-sm">Deletar</a></td>
                         </tr>
                     {% endfor %}
                     </tbody>

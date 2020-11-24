@@ -11,13 +11,40 @@
     <div class="container-fluid">
         <div class="row">
             <div class="container">
-                <div class="col-md-8 col-xs-12">
+                <div class="col-md-12 col-xs-12">
                     {{ form_start(form) }}
-                    <div class="col-md-8 col-xs-12">
+                    <div class="col-md-12 col-xs-12">
                         {{ form_row(form.titulo, {'label':'Título'}) }}
                     </div>
-                    <div class="col-md-8 col-xs-12">
+                    <div class="col-md-12 col-xs-12">
+                        {{ form_row(form.descricao, {'label':'Descrição'}) }}
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                        {{ form_row(form.datacadastro, {'label':'Data de cadastro'}) }}
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                        {{ form_row(form.dataabertura, {'label':'Data de abertura'}) }}
+                    </div>
+                    <div class="col-md-12 col-xs-12">
+                        {{ form_row(form.solucaoadotada, {'label':'Solução Adotada'}) }}
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                        {{ form_row(form.datafechamento, {'label':'Data de Fechamento'}) }}
+                    </div>
+                    <div class="col-md-6 col-xs-12">
                         {{ form_row(form.status, {'label':'Status'}) }}
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                        {{ form_row(form.responsavel, {'label':'Responsável'}) }}
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                        {{ form_row(form.departamento, {'label':'Departamento'}) }}
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                        {{ form_row(form.criado_por, {'label':'Criado por'}) }}
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                        {{ form_row(form.solicitado_por, {'label':'Solicitado por'}) }}
                     </div>
                     <div class="col-md-12 col-xs-12">
                         <input type="submit" value="Enviar" class="btn btn-primary"/>

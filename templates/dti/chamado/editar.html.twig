@@ -1,32 +1,57 @@
 {% extends "base.html.twig" %}
 {% block header %}
+{% endblock %}
 
-    <a href="{{ path('index_geral') }}" class="navbar-brand" title="Home">
-        <i class="glyphicon glyphicon-home"></i>
-    </a>
-
+{% block content %}
     <div class="fundo-topo-menu">
-        Editar Chamado
+        Editar chamado
     </div>
 
-{% endblock %}
-{% block content %}
-    <div class="container">
+    <br>
+
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-md-8 col-xs-12">
-                {{ form_start(form) }}
-                <div class="row">
-                    <div class="col-md-2 col-xs-12">
-                        {{ form_row(form.id, {'label':'Id'}) }}
+            <div class="container">
+                <div class="col-md-12 col-xs-12">
+                    {{ form_start(form) }}
+                    <div class="col-md-12 col-xs-12">
+                        {{ form_row(form.titulo, {'label':'Título'}) }}
                     </div>
-                    <div class="col-md-10 col-xs-12">
-                        {{ form_row(form.nome, {'label':'Nome'}) }}
+                    <div class="col-md-12 col-xs-12">
+                        {{ form_row(form.descricao, {'label':'Descrição'}) }}
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                        {{ form_row(form.datacadastro, {'label':'Data de cadastro'}) }}
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                        {{ form_row(form.dataabertura, {'label':'Data de abertura'}) }}
+                    </div>
+                    <div class="col-md-12 col-xs-12">
+                        {{ form_row(form.solucaoadotada, {'label':'Solução Adotada'}) }}
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                        {{ form_row(form.datafechamento, {'label':'Data de Fechamento'}) }}
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                        {{ form_row(form.status, {'label':'Status'}) }}
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                        {{ form_row(form.responsavel, {'label':'Responsável'}) }}
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                        {{ form_row(form.departamento, {'label':'Departamento'}) }}
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                        {{ form_row(form.criado_por, {'label':'Criado por'}) }}
+                    </div>
+                    <div class="col-md-6 col-xs-12">
+                        {{ form_row(form.solicitado_por, {'label':'Solicitado por'}) }}
                     </div>
                     <div class="col-md-12 col-xs-12">
                         <input type="submit" value="Enviar" class="btn btn-primary"/>
                     </div>
+                    {{ form_end(form) }}
                 </div>
-                {{ form_end(form) }}
             </div>
         </div>
     </div>

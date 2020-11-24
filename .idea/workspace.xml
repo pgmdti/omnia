@@ -2,13 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6e07630d-b700-4837-8dce-d071d506b6d8" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/symfony2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/omnia.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/omnia.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/commandlinetools/Symfony_23_11_2020_11_42.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/commandlinetools/schemas/frameworkDescriptionVersion1.1.4.xsd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/dti/ChamadoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/dti/ChamadoController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/dti/Chamado.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/dti/Chamado.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/ChamadoType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ChamadoType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/dti/chamado/editar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/dti/chamado/editar.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/dti/chamado/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/dti/chamado/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/dti/chamado/novo.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/dti/chamado/novo.html.twig" afterDir="false" />
     </list>
@@ -244,7 +246,7 @@
   <component name="PackageJsonUpdateNotifier">
     <dismissed value="$PROJECT_DIR$/package.json" />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration">
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.2">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/symfony/serializer-pack" />
       <path value="$PROJECT_DIR$/vendor/symfony/doctrine-bridge" />
@@ -685,6 +687,7 @@
     </panes>
   </component>
   <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
@@ -693,17 +696,21 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="js.buildTools.grunt.grunt-cli.package" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/bin/console" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="C:/Users/fcoco/AppData/Roaming/npm/node_modules/eslint" />
     <property name="node.js.selected.package.standard" value="" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="Symfony2.RoutingSettingsForm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -721,6 +728,21 @@
       <recent name="C:\Bitnami\wampstack-7.0.28-0\frameworks\omnia\src\Controller\dti\printers" />
       <recent name="C:\Bitnami\wampstack-7.0.28-0\frameworks\omnia\src\Entity\dti\printers" />
     </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="symfony list" />
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="Localhost" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/bin/console" scriptParameters="serve:run">
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="js.build_tools.grunt">
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
@@ -843,7 +865,11 @@
       <workItem from="1605886261176" duration="126000" />
       <workItem from="1605886395158" duration="32000" />
       <workItem from="1605886434371" duration="55000" />
-      <workItem from="1605886498186" duration="1628000" />
+      <workItem from="1605886498186" duration="1695000" />
+      <workItem from="1606127451269" duration="11864000" />
+      <workItem from="1606142558328" duration="868000" />
+      <workItem from="1606143526566" duration="2451000" />
+      <workItem from="1606213673801" duration="8181000" />
     </task>
     <servers />
   </component>
@@ -889,6 +915,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />

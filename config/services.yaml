@@ -39,7 +39,7 @@ services:
             - { name: twig.extension }
 
     employeeformtype_entitymanager.service:
-        class: App\Entity\dai\rh\EmployeeFormType
+        class: App\Form\EmployeeFormType
         arguments:
         entityManager: "@doctrine.orm.entity_manager"
 
@@ -52,6 +52,11 @@ services:
         class: App\Entity\Lotacao
         arguments:
         em: "@doctrine.orm.entity_manager"
+
+    chamadotype_entitymanager.service:
+        class: App\Form\EmployeeFormType
+        arguments:
+        entityManager: "@doctrine.orm.entity_manager"
 
     redirect.after.login:
         class: App\Redirection\AfterLoginRedirection
@@ -113,3 +118,6 @@ monolog:
             level:  debug
         console:
             type:   console
+
+sentry:
+    dsn: "https://62cc190c9e91477793a7d0c32415f7fb@o295700.ingest.sentry.io/5561231"

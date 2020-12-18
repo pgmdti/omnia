@@ -20,7 +20,7 @@ class Chamado
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\dai\rh\Departamento", inversedBy="chamados")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Lotacao", inversedBy="chamados")
      * @ORM\JoinColumn(name="departamento_id", referencedColumnName="id")
      */
     protected $departamento;
@@ -29,7 +29,7 @@ class Chamado
      * @ORM\ManyToOne(targetEntity="App\Entity\dai\rh\Employee", inversedBy="chamados")
      * @ORM\JoinColumn(name="responsavel", referencedColumnName="matricula")
      */
-    protected $responsavel;
+    protected $responsavel = null;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\dai\rh\Employee", inversedBy="chamados")
@@ -61,7 +61,7 @@ class Chamado
     /**
      * @ORM\Column(name="datacadastro", type="date", nullable=true)
      */
-    protected $datacadastro;
+    private $datacadastro;
 
     /**
      * @ORM\Column(name="dataabertura", type="date", nullable=true)
@@ -77,6 +77,12 @@ class Chamado
      * @ORM\Column(name="solucaoadotada", type="text", length=65535, nullable=true)
      */
     protected $solucaoadotada;
+
+
+    public function __construct()
+    {
+        $this->datacadastro = new \DateTime();
+    }
 
     /**
      * @return mixed

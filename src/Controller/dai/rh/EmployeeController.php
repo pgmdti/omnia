@@ -10,7 +10,7 @@ namespace App\Controller\dai\rh;
 
 use App\Entity\dai\rh\Cidade;
 use App\Entity\dai\rh\Documento;
-use App\Entity\dai\rh\EmployeeFormType;
+use App\Form\EmployeeFormType;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\File\File;
@@ -33,7 +33,6 @@ class EmployeeController extends Controller
      * @return Response|\Symfony\Component\HttpFoundation\Response
      */
     public function novo(Request $request){
-
 
         $entityManager = $this->getDoctrine()->getManager();
 

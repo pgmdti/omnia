@@ -16,44 +16,22 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Security\Core\Security;
+
+use Symfony\Component\Debug\Debug;
+
+Debug::enable();
 
 class ChamadoType extends AbstractType
 {
 
-    public function __construct(TokenStorageInterface $tokenStorage, EmployeeRepository $employeeRepository)
+    public function __construct(Security $security, TokenStorageInterface $tokenStorage, EmployeeRepository $employeeRepository)
     {
-        $this->user = $tokenStorage->getToken('security.token_storage')->getUser();
-        $this->employee = $employeeRepository->findOneBy(array('matricula', $this->user->getMatricula()));
+//        $this->user = $tokenStorage->getToken('security.token_storage')->getUser();
+//        $this->user = $tokenStorage->getToken()->getUser();
 //        $this->debug_to_console($this->user);
-    }
-
-    /**
-     * Simple helper to debug to the console
-     *
-     * @param  Array, Object, String $data
-     * @return String
-     */
-    function debug_to_console( $data ) {
-
-        $output = '';
-
-        if ( is_array( $data ) ) {
-            $output .= "<script>console.warn( 'Debug Objects with Array.' ); console.log( '" . implode( ',', $data) . "' );</script>";
-        } else if ( is_object( $data ) ) {
-            $data    = var_export( $data, TRUE );
-            $data    = explode( "\n", $data );
-            foreach( $data as $line ) {
-                if ( trim( $line ) ) {
-                    $line    = addslashes( $line );
-                    $output .= "console.log( '{$line}' );";
-                }
-            }
-            $output = "<script>console.warn( 'Debug Objects with Object.' ); $output</script>";
-        } else {
-            $output .= "<script>console.log( 'Debug Objects: {$data}' );</script>";
-        }
-
-        echo $output;
+        $this->user = $security->getUser();
+        $this->employee = $employeeRepository->findOneBy(['matricula' => $this->user->getMatricula()]);
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -101,7 +79,7 @@ class ChamadoType extends AbstractType
                 'class' => Employee::class,
                 'choice_label' => 'nome',
                 'query_builder' => function(EntityRepository $er){
-                    return $er->createQueryBuilder('u')->orderBy('u.nome', 'ASC');
+                    return $er->createQueryBuilder('u')->where('u.matricula = ?1')->orderBy('u.nome', 'ASC');
                 }
             ])
             ->add('departamento', EntityType::class, [
@@ -111,9 +89,9 @@ class ChamadoType extends AbstractType
             ->add('criado_por', EntityType::class, [
                 'class' => Employee::class,
                 'choice_label' => 'nome',
-//                'query_builder' => function(EntityRepository $er){
-//                    return $er->createQueryBuilder('u')->where('u.id = ?1')->setParameter(1, $this->user);
-//                }
+                'query_builder' => function(EntityRepository $er){
+                    return $er->createQueryBuilder('u')->where('u.matricula = ?1')->setParameter(1, $this->user->getMatricula());
+                }
             ])
             ->add('solicitado_por', EntityType::class, [
                 'class' => Employee::class,

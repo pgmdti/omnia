@@ -35,14 +35,11 @@
 * `sudo add-apt-repository ppa:ondrej/php`
 * `sudo apt-get update`
 * `sudo apt-get install -y php7.1`
-* `sudo apt-get install php7.1-xml`
+* `sudo apt-get install php7.1-xml php7.1-curl php7.1-mbstring`
 * `sudo apt-get install wget php7.1-cli php7.1-zip zip unzip`
 * `wget -O composer-setup.php https://getcomposer.org/installer`
 * `sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer`
 
 ## Configurando o projeto para desenvolvimento em um novo computador:
-* instalar php 7.1
-* instalar as extensões necessárias para rodar o projeto:
-** php-xml
-* instalar as dependências do projeto via composer:
-** composer install
+* instalar php 7.1 e as extensões necessárias para rodar o projeto
+* instalar as dependências do projeto via composer: `composer install`

@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "bower": "^1.8.4",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "jspdf": "^1.5.3",
     "picker": "^0.1.4",
     "yarn-install": "^1.0.0"

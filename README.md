@@ -1,4 +1,6 @@
-### Requisitos para rodar o projeto localmente: PHP 7.1.29 instalado (mesma versão do VPS)
+## Requisitos
+* PHP 7.1.29
+* php-xml
 
 ## CRIAR UMA NOVA ENTITY:
 php bin/console make:entity
@@ -29,5 +31,23 @@ php bin/console doctrine:database:create
 php bin/console doctrine:schema:update --force
 
 # INSTALAR COMPOSER
+sudo apt install composer
+
 # INSTALAR SYMFONY
 
+
+# Instalar PHP 7.1 no Ubuntu 16.04 em diante) - testado no Ubuntu 20.04
+sudo add-apt-repository ppa:ondrej/php
+sudo apt-get install -y php7.1
+sudo apt-get install php7.1-xml
+sudo apt-get install wget php7.1-cli php7.1-zip zip unzip
+wget -O composer-setup.php https://getcomposer.org/installer
+
+
+
+## Configurando o projeto para desenvolvimento em um novo computador:
+* instalar php 7.1
+* instalar as extensões necessárias para rodar o projeto:
+** php-xml
+* instalar as dependências do projeto via composer:
+** composer install

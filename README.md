@@ -33,6 +33,7 @@
 
 ## Instalar PHP 7.1 no Ubuntu 16.04 em diante) - testado no Ubuntu 20.04
 * `sudo add-apt-repository ppa:ondrej/php`
+* `sudo apt-get update`
 * `sudo apt-get install -y php7.1`
 * `sudo apt-get install php7.1-xml`
 * `sudo apt-get install wget php7.1-cli php7.1-zip zip unzip`
